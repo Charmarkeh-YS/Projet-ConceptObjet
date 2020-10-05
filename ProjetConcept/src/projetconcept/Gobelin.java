@@ -11,4 +11,10 @@ package projetconcept;
  */
 public class Gobelin extends EtreVivant{
     
+    public Gobelin(){
+        
+        super();
+        
+    }
+    
 }

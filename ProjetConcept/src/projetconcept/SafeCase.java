@@ -11,4 +11,10 @@ package projetconcept;
  */
 public class SafeCase extends Case{
     
+    public SafeCase(){
+        
+        super();
+        
+    }
+    
 }

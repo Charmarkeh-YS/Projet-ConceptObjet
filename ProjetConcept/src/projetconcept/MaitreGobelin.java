@@ -11,4 +11,10 @@ package projetconcept;
  */
 public class MaitreGobelin extends Gobelin{
     
+    public MaitreGobelin(){
+        
+        super();
+        
+    }
+    
 }

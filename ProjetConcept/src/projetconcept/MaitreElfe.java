@@ -11,4 +11,10 @@ package projetconcept;
  */
 public class MaitreElfe extends Elfe{
     
+    public MaitreElfe(){
+        
+        super();
+        
+    }
+    
 }

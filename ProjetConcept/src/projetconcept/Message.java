@@ -11,4 +11,10 @@ package projetconcept;
  */
 public class Message {
     
+    public Message(){
+        
+        
+        
+    }
+    
 }

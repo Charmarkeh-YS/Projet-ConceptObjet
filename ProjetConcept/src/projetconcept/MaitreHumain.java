@@ -11,4 +11,10 @@ package projetconcept;
  */
 public class MaitreHumain extends Humain{
     
+    public MaitreHumain(){
+        
+        super();
+        
+    }
+    
 }

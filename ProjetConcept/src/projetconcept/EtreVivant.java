@@ -11,4 +11,9 @@ package projetconcept;
  */
 abstract class EtreVivant {
     
+    public EtreVivant(){      
+        
+        
+    }
+    
 }

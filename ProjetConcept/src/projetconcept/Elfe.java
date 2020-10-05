@@ -12,4 +12,10 @@ package projetconcept;
  */
 public class Elfe extends EtreVivant{
     
+    public Elfe(){
+        
+        super();
+        
+    }
+    
 }

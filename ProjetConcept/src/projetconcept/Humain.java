@@ -11,4 +11,10 @@ package projetconcept;
  */
 public class Humain extends EtreVivant {
     
+    public Humain(){
+        
+        super();
+        
+    }
+    
 }

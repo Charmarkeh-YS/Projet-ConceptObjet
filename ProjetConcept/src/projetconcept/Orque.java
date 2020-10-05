@@ -11,4 +11,11 @@ package projetconcept;
  */
 public class Orque extends EtreVivant{
     
+    
+    public Orque(){
+        
+        super();
+        
+    }
+    
 }

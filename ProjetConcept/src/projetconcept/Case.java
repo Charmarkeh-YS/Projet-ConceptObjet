@@ -11,4 +11,9 @@ package projetconcept;
  */
 public class Case {
     
+    public Case(){
+               
+        
+    }
+    
 }
