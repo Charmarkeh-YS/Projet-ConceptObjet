@@ -9,6 +9,6 @@ package projetconcept;
  *
  * @author Toine
  */
-public class Orque {
+public class Orque extends EtreVivant{
     
 }

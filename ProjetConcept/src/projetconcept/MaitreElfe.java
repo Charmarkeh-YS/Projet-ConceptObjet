@@ -9,6 +9,6 @@ package projetconcept;
  *
  * @author Toine
  */
-public class MaitreElfe {
+public class MaitreElfe extends Elfe{
     
 }

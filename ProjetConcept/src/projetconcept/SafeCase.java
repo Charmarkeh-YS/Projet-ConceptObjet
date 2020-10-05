@@ -9,6 +9,6 @@ package projetconcept;
  *
  * @author Toine
  */
-public class SafeCase {
+public class SafeCase extends Case{
     
 }

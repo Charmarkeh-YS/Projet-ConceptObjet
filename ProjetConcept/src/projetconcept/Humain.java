@@ -9,6 +9,6 @@ package projetconcept;
  *
  * @author Toine
  */
-public class Humain {
+public class Humain extends EtreVivant {
     
 }

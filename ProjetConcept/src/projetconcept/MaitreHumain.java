@@ -9,6 +9,6 @@ package projetconcept;
  *
  * @author Toine
  */
-public class MaitreHumain {
+public class MaitreHumain extends Humain{
     
 }

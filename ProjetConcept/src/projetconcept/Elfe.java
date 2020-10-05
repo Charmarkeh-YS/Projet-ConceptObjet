@@ -10,6 +10,6 @@ package projetconcept;
  *
  * @author Toine
  */
-public class Elfe {
+public class Elfe extends EtreVivant{
     
 }

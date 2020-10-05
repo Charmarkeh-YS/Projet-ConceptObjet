@@ -9,6 +9,6 @@ package projetconcept;
  *
  * @author Toine
  */
-public class EtreVivant {
+abstract class EtreVivant {
     
 }

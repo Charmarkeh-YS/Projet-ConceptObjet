@@ -9,6 +9,6 @@ package projetconcept;
  *
  * @author Toine
  */
-public class Gobelin {
+public class Gobelin extends EtreVivant{
     
 }
