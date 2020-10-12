@@ -5,16 +5,35 @@
  */
 package projetconcept;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Toine
  */
 public class SafeCase extends Case{
     
+    String espece;
+    
+    ArrayList<Case> cases;
+    
     public SafeCase(){
         
         super();
         
     }
+    
+    public String getEspece(){
+        
+        return this.espece;
+        
+    }
+    
+    
+    public void setEspece(String pEspece){
+        
+        this.espece = pEspece;
+        
+    }    
     
 }
