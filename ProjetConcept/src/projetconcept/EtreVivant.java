@@ -10,10 +10,10 @@ package projetconcept;
  * @author Toine
  */
 abstract class EtreVivant {
-    
+        
     public EtreVivant(){      
         
-        
+          
     }
     
 }
