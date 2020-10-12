@@ -15,7 +15,6 @@ public class SafeCase extends Case{
     
     String espece;
     
-    ArrayList<Case> cases;
     
     public SafeCase(){
         

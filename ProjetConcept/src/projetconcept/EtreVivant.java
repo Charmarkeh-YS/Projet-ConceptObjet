@@ -10,6 +10,8 @@ package projetconcept;
  * @author Toine
  */
 abstract class EtreVivant {
+    
+    Savoir savoir;
         
     public EtreVivant(){      
         
