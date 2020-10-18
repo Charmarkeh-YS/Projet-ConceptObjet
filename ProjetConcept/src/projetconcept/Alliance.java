@@ -9,25 +9,22 @@ package projetconcept;
  *
  * @author Toine
  */
-public class Message {
+enum Alliance {
     
-    private int iD;
+    ATEAM("Equipe A"),
+    BTEAM("Equipe B");      
     
-    public Message(){
+    private final String nom;  
+
+    Alliance(String nom){
         
-        
+        this.nom = nom;    
         
     }
-    
-    public int getID(){
+
+    public String getNom(){
         
-        return this.iD;
-        
-    }
-    
-    public void setID(int pID){
-        
-        this.iD = pID;
+        return this.nom; 
         
     }
     

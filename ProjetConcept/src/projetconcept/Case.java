@@ -11,6 +11,8 @@ package projetconcept;
  */
 public class Case {
     
+    private final String VIDE = "";
+    
     private int x;
     private int y;
     
@@ -18,6 +20,26 @@ public class Case {
     
     public Case(){
                
+        
+    }
+    
+    public void vider(){
+        
+        this.contenu = VIDE;
+        
+    }
+    
+    public boolean isEmpty(){
+        
+        boolean bool = false;
+        
+        if (this.contenu == VIDE){
+            
+            bool = true;
+            
+        }
+        
+        return bool;
         
     }
         
