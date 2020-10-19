@@ -5,6 +5,8 @@
  */
 package projetconcept;
 
+import java.util.ArrayList;
+
 
 
 /**
@@ -15,7 +17,8 @@ abstract class EtreVivant {
     
     Aleatoire AJE;
     
-    private final int PE_DE_BASE = 0;
+    private final int PE_DE_BASE = 100;
+    private final int PE_CRITIQUE = 10;
     
     private Savoir savoir;
     private int pE;
@@ -34,17 +37,41 @@ abstract class EtreVivant {
     
     public void move(){
         
-                
+        if (pE > PE_CRITIQUE){
+            
+            this.rechercheMessages();
+            
+        }
+        
+        else{
+            
+            this.retourSafeZone();
+            
+        }                
         
     }
     
-    public void changerCase(Case caseApres){
+    public boolean changerCase(Case caseApres){
         
-        this.caseCourante.vider();
+        boolean flag = false;
         
-        this.caseCourante = caseApres;
+        if (caseApres.isEmpty()){
         
-        this.caseCourante.setContenu(this);
+            this.caseCourante.vider();
+        
+            this.caseCourante = caseApres;
+        
+            this.caseCourante.setContenu(this);
+        
+        }
+        
+        else{
+            
+            flag = true;
+            
+        }
+        
+        return flag;
         
     }
     
@@ -73,16 +100,53 @@ abstract class EtreVivant {
         
     }
     
-    public void choixProchaineCase(){
-  
+    public void retourSafeZone(){
+        
+        
         
     }
     
-    public Direction choixProchaineDirection(){
+    public void rechercheMessages(){
+        
+        boolean flag = false;
+        
+        while(scanAlentours().isEmpty() && flag){
+            
+            flag = this.changerCase(this.prochaineCase());
+            
+        }
+        
+        for (int i = 0; i < scanAlentours().size(); i++){
+            
+            rencontrer((EtreVivant) scanAlentours().get(i).getContenu());
+            
+        }       
+        
+    }
+    
+    public Case prochaineCase(){
+  
+        Case prochaineCase = new Case();
+        
+        return prochaineCase;
+        
+    }
+    
+    public Direction prochaineDirection(){
         
         Direction prochaineDirection = Direction.FIXE;
         
         return prochaineDirection;
+    }
+    
+    public ArrayList<Case> scanAlentours(){
+        
+        ArrayList<Case> casesOccupees = new ArrayList();
+        
+        
+        
+        return casesOccupees;
+        
     }
      
     public int getPE(){
