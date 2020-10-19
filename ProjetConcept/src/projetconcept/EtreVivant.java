@@ -13,6 +13,8 @@ package projetconcept;
  */
 abstract class EtreVivant {
     
+    Aleatoire AJE;
+    
     private final int PE_DE_BASE = 0;
     
     private Savoir savoir;
@@ -69,6 +71,18 @@ abstract class EtreVivant {
             
         }
         
+    }
+    
+    public void choixProchaineCase(){
+  
+        
+    }
+    
+    public Direction choixProchaineDirection(){
+        
+        Direction prochaineDirection = Direction.FIXE;
+        
+        return prochaineDirection;
     }
      
     public int getPE(){
