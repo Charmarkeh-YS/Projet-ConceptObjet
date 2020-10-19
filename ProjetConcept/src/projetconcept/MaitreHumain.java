@@ -11,9 +11,9 @@ package projetconcept;
  */
 public class MaitreHumain extends Humain{
     
-    public MaitreHumain(){
+    public MaitreHumain(Carte pCarte){
         
-        super();
+        super(pCarte);
         
     }
     

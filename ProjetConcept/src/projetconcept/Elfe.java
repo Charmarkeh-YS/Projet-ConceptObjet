@@ -12,9 +12,16 @@ package projetconcept;
  */
 public class Elfe extends EtreVivant{
     
-    public Elfe(){
+    public Elfe(Carte pCarte){
         
-        super();
+        super(pCarte);
+        
+    }
+    
+    @Override
+    public String toString(){
+        
+        return "+";
         
     }
     

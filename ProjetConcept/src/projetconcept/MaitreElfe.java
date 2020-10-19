@@ -11,9 +11,9 @@ package projetconcept;
  */
 public class MaitreElfe extends Elfe{
     
-    public MaitreElfe(){
+    public MaitreElfe(Carte pCarte){
         
-        super();
+        super(pCarte);
         
     }
     

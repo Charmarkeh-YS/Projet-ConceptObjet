@@ -11,9 +11,9 @@ package projetconcept;
  */
 public class MaitreOrque extends Orque{
     
-    public MaitreOrque(){
+    public MaitreOrque(Carte pCarte){
         
-        super();
+        super(pCarte);
         
     }
     

@@ -12,9 +12,16 @@ package projetconcept;
 public class Orque extends EtreVivant{
     
     
-    public Orque(){
+    public Orque(Carte pCarte){
         
-        super();
+        super(pCarte);
+        
+    }
+    
+    @Override
+    public String toString(){
+        
+        return "#";
         
     }
     

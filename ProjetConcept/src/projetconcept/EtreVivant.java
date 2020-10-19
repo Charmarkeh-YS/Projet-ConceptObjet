@@ -27,11 +27,13 @@ abstract class EtreVivant {
     private Case caseCourante;
     private Carte carte;
         
-    public EtreVivant(){      
+    public EtreVivant(Carte pCarte){      
         
         savoir = new Savoir();
         pE = PE_DE_BASE;
         derniereDirection = Direction.FIXE;
+        carte = pCarte;
+        caseCourante = new Case();
           
     }    
     
@@ -58,10 +60,14 @@ abstract class EtreVivant {
         if (caseApres.isEmpty()){
         
             this.caseCourante.vider();
+            
+            this.caseCourante.occupee = false;
         
             this.caseCourante = caseApres;
         
             this.caseCourante.setContenu(this);
+            
+            this.caseCourante.occupee = true;
         
         }
         
@@ -126,28 +132,32 @@ abstract class EtreVivant {
     
     public Case prochaineCase(){
   
-        Case prochaineCase = new Case();
+        ArrayList<Case> voisins = this.carte.voisons(this.caseCourante);
+              
+        return voisins.get(AJE.piocheCase(voisins));
         
-        return prochaineCase;
-        
-    }
-    
-    public Direction prochaineDirection(){
-        
-        Direction prochaineDirection = Direction.FIXE;
-        
-        return prochaineDirection;
     }
     
     public ArrayList<Case> scanAlentours(){
         
-        ArrayList<Case> casesOccupees = new ArrayList();
+        ArrayList<Case> voisins = this.carte.voisons(this.caseCourante);
         
+        ArrayList<Case> casesOccupees = new ArrayList<>();
         
+        for (int i = 0; i< voisins.size(); i++){
+            
+            if (voisins.get(i).occupee){
+                
+                casesOccupees.add(voisins.get(i));
+                
+            }
+            
+        }
         
         return casesOccupees;
         
     }
+   
      
     public int getPE(){
         
@@ -220,5 +230,8 @@ abstract class EtreVivant {
         this.carte = pCarte;
         
     }
+    
+    @Override
+    public abstract String toString();
     
 }

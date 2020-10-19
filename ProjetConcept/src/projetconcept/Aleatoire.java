@@ -5,6 +5,9 @@
  */
 package projetconcept;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 /**
  *
  * @author Toine
@@ -22,6 +25,16 @@ public class Aleatoire {
         }
         
         return bool;
+        
+    }
+    
+    public int piocheCase(ArrayList<Case> liste){
+        
+        int taille = liste.size();
+        
+        Random random = new Random();
+        
+        return random.nextInt(taille - 1);
         
     }
     

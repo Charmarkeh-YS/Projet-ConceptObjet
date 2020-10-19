@@ -11,9 +11,17 @@ package projetconcept;
  */
 public class Gobelin extends EtreVivant{
     
-    public Gobelin(){
+    public Gobelin(Carte pCarte){
         
-        super();
+        super(pCarte);
+        
+    }
+    
+    
+    @Override
+    public String toString(){
+        
+        return "O";
         
     }
     

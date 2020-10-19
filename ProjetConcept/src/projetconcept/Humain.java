@@ -11,9 +11,17 @@ package projetconcept;
  */
 public class Humain extends EtreVivant {
     
-    public Humain(){
+    public Humain(Carte pCarte){
         
-        super();
+        super(pCarte);
+        
+    }
+    
+    
+    @Override
+    public String toString(){
+        
+        return "@";
         
     }
     

@@ -16,7 +16,7 @@ public class SafeCase extends Case{
     String espece;
     
     
-    public SafeCase(){
+    public SafeCase(int pX, int pY){
         
         super();
         

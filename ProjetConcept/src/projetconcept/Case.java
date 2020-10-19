@@ -11,15 +11,26 @@ package projetconcept;
  */
 public class Case {
     
-    private final String VIDE = "";
+    private final String VIDE = "-";
     
     private int x;
     private int y;
     
+    boolean occupee;
+    
     private Object contenu;
     
     public Case(){
+        
+        this.vider();
+        
+    }
+    
+    public Case(int pX, int pY){
                
+        this.x = pX;
+        this.y = pY;
+        this.vider();
         
     }
     
@@ -76,6 +87,29 @@ public class Case {
     public void setContenu(Object pContenu){
         
         this.contenu = pContenu;
+        
+    }
+    
+    @Override
+    public String toString(){
+        
+        String string = new String();
+        
+        if (this.isEmpty()){
+            
+            string = (String) this.contenu;
+            
+        }
+        
+        if (this.occupee){
+            
+            EtreVivant temp = (EtreVivant) this.contenu;
+            
+            string = temp.toString();
+            
+        }
+        
+        return string;
         
     }
     
