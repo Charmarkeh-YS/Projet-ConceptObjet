@@ -13,6 +13,8 @@ import java.util.ArrayList;
  */
 public class Savoir {
     
+    Aleatoire AJE;
+    
     ArrayList<Message> messages;
     
     int nombreMessages;   
@@ -46,6 +48,83 @@ public class Savoir {
             
         }
         
+        
+    }
+    
+    
+    public void partagePartielDesSavoir(Savoir pSavoir){
+        
+        for (int i = 0; i<pSavoir.messages.size(); i++){
+            
+            if (notIn(pSavoir.messages.get(i)) && AJE.pileOuFace()){
+                
+                this.messages.add(pSavoir.messages.get(i));
+                
+            }
+            
+        }
+        
+        for (int j = 0; j<this.messages.size(); j++){
+            
+            if (pSavoir.notIn(this.messages.get(j)) && AJE.pileOuFace()){
+                
+                pSavoir.messages.add(this.messages.get(j));
+                
+            }
+            
+        }
+        
+        
+    }
+    
+    public void confrontationDesSavoir(Savoir pSavoir){
+        
+        
+        if (AJE.pileOuFace()){
+            
+            for (int i = 0; i<pSavoir.messages.size(); i++){
+            
+                if (notIn(pSavoir.messages.get(i)) && AJE.pileOuFace()){
+                
+                    this.messages.add(pSavoir.messages.get(i));
+                    pSavoir.perdreMessage(pSavoir.messages.get(i).getID());
+                
+                }
+            
+            }
+            
+        }
+        
+        else{
+            
+            for (int j = 0; j<this.messages.size(); j++){
+            
+            if (pSavoir.notIn(this.messages.get(j)) && AJE.pileOuFace()){
+                
+                pSavoir.messages.add(this.messages.get(j));
+                this.perdreMessage(this.messages.get(j).getID());
+                
+            }
+            
+        }
+            
+        }
+        
+        
+    }
+    
+    
+    public void perdreMessage(int messageID){
+        
+        for (int i = 0; i < this.messages.size(); i++){
+            
+            if (this.messages.get(i).getID() == messageID){
+                
+                this.messages.remove(i);
+                
+            }
+            
+        }        
         
     }
     

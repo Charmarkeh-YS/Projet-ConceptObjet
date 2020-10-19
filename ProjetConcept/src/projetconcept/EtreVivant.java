@@ -57,7 +57,7 @@ abstract class EtreVivant {
             
             else{
                 
-                //Si meme Alliance
+                this.savoir.partagePartielDesSavoir(autre.getSavoir());
                 
             }
             
@@ -65,9 +65,7 @@ abstract class EtreVivant {
         
         else{
             
-            
-            //Si autre Alliance
-            
+            this.savoir.cumulDesSavoirs(autre.getSavoir());
             
         }
         
