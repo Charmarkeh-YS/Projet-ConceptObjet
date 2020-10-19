@@ -22,7 +22,9 @@ public class Savoir {
     
     public Savoir(){
         
-                
+        messages = new ArrayList();
+        
+        nombreMessages = 0;
         
     }
     

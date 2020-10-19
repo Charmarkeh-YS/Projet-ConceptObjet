@@ -6,6 +6,7 @@
 package projetconcept;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 
@@ -39,7 +40,11 @@ abstract class EtreVivant {
     
     public void move(){
         
+        
+        
         if (pE > PE_CRITIQUE){
+            
+            System.out.println("X : " + this.caseCourante.getX() + " Y :" + this.caseCourante.getY());
             
             this.rechercheMessages();
             
@@ -50,6 +55,8 @@ abstract class EtreVivant {
             this.retourSafeZone();
             
         }                
+        
+        System.out.println("X : " + this.caseCourante.getX() + " Y :" + this.caseCourante.getY());
         
     }
     
@@ -116,7 +123,7 @@ abstract class EtreVivant {
         
         boolean flag = false;
         
-        while(scanAlentours().isEmpty() && flag){
+        while(scanAlentours().isEmpty() && !flag){
             
             flag = this.changerCase(this.prochaineCase());
             
@@ -132,9 +139,11 @@ abstract class EtreVivant {
     
     public Case prochaineCase(){
   
+        Random random = new Random();
+        
         ArrayList<Case> voisins = this.carte.voisons(this.caseCourante);
               
-        return voisins.get(AJE.piocheCase(voisins));
+        return voisins.get(random.nextInt(voisins.size()));
         
     }
     

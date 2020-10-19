@@ -37,6 +37,23 @@ public class ProjetConcept {
         carte.ajoutEtresVivants(liste);
         
         carte.afficherCarte();
+        
+        hu.move();
+        
+        carte.afficherCarte();
+        
+        el.move();
+        
+        carte.afficherCarte();
+        
+        oc.move();
+        
+        carte.afficherCarte();
+        
+        go.move();
+        
+        carte.afficherCarte();
+        
     }
     
 }

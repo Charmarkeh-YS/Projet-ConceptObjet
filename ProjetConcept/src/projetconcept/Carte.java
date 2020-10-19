@@ -64,11 +64,11 @@ public class Carte {
                 { 1, 1} 
             }; 
         
-        for (int i = 0; i < 9; i++){
+        for (int i = 0; i < 8; i++){
             
             if (pCase.getX() + coor[i][0] > 0 && pCase.getY() + coor[i][1] > 0 && pCase.getX() + coor[i][0] < this.dimensions.getLongueurX() - 1 && pCase.getY() + coor[i][1] < this.dimensions.getLongueurY()){
                 
-                voisins.add(this.chercherCase(coor[i][0], coor[i][1]));                
+                voisins.add(this.chercherCase(pCase.getX() + coor[i][0], pCase.getY() + coor[i][1]));                
             }
             
         }
@@ -80,6 +80,8 @@ public class Carte {
     public Case chercherCase(int pX, int pY){
         
         int idCase = -1;
+        
+        
         
         for (int i = 0; i < this.cases.size(); i++){
             
