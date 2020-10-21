@@ -10,6 +10,8 @@ import java.util.ArrayList;
 /**
  *
  * @author Toine
+ * 
+ * Une safe Case est une case
  */
 public class SafeCase extends Case{
     
@@ -21,6 +23,11 @@ public class SafeCase extends Case{
         super();
         
     }
+    
+    
+    ////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////Geters et Seters/////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
     
     public String getEspece(){
         

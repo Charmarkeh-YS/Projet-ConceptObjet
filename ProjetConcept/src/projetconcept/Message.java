@@ -11,13 +11,20 @@ package projetconcept;
  */
 public class Message {
     
-    private int iD;
+    private int iD; /*id unique permetant de différencier les messages sans les comparer*/
+    
+    /*Ajouter le contenu du message, String ?*/
     
     public Message(){
         
         
         
     }
+    
+    
+    ////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////Geters et Seters/////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
     
     public int getID(){
         

@@ -8,8 +8,18 @@ package projetconcept;
 /**
  *
  * @author Toine
+ * 
+ * Un Gobelin est un EtreVivant
  */
 public class Gobelin extends EtreVivant{
+    
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Constructeur
+    */
     
     public Gobelin(Carte pCarte){
         
@@ -17,6 +27,14 @@ public class Gobelin extends EtreVivant{
         
     }
     
+    
+    
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////
+    //////////Redefinission des fonctions de base (Equal, toString...)//////////
+    ////////////////////////////////////////////////////////////////////////////
     
     @Override
     public String toString(){

@@ -15,6 +15,9 @@ public class ProjetConcept {
 
     /**
      * @param args the command line arguments
+     * 
+     * Pour l'instant TESTS
+     * 
      */
     public static void main(String[] args) {
         
@@ -36,7 +39,14 @@ public class ProjetConcept {
         
         carte.ajoutEtresVivants(liste);
         
+        /*On a créé une carte avec 4 EtreVivant dessus*/
+        
+        
+        /*On affiche la carte*/
+        
         carte.afficherCarte();
+        
+        /*4 fois de suite on bouge un EtreVivant puis on affiche la carte*/
         
         hu.move();
         

@@ -13,18 +13,32 @@ public class Case {
     
     private final String VIDE = "-";
     
-    private int x;
+    private int x;      /*Coordonnées en X et en Y*/
     private int y;
     
-    boolean occupee;
+    boolean occupee;    /*Boolean indiquant si la case est occupée par un ETRE VIVANT, ainsi si un obstacle est dessous, occupee = false*/
     
-    private Object contenu;
+    private Object contenu;     /*contenu de la case*/
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Constructeur
+    */
     
     public Case(){
         
         this.vider();
         
     }
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Constructeur
+    */
     
     public Case(int pX, int pY){
                
@@ -34,11 +48,26 @@ public class Case {
         
     }
     
+    /**
+    *
+    * @author Toine
+    * 
+    * Méthode permettant de vider la case, on remarque qu'on ne change pas l'occupation (pour l'instant ?)
+    */
+    
     public void vider(){
         
         this.contenu = VIDE;
         
     }
+    
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Méthode permetant de savoir si une case est vide
+    */
     
     public boolean isEmpty(){
         
@@ -53,6 +82,10 @@ public class Case {
         return bool;
         
     }
+    
+    ////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////Geters et Seters/////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
         
     public int getX(){
         
@@ -89,6 +122,10 @@ public class Case {
         this.contenu = pContenu;
         
     }
+    
+    ////////////////////////////////////////////////////////////////////////////
+    //////////Redefinission des fonctions de base (Equal, toString...)//////////
+    ////////////////////////////////////////////////////////////////////////////
     
     @Override
     public String toString(){

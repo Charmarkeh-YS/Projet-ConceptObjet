@@ -11,8 +11,16 @@ package projetconcept;
  */
 public class Dimensions {
     
-    private int longueurX;
+    private int longueurX;      /*Dimenssions définies en X et Y*/
     private int longueurY;
+    
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Constructeur
+    */
     
     public Dimensions(int pLongueurX, int pLongueurY){
         
@@ -20,6 +28,10 @@ public class Dimensions {
         this.longueurY = pLongueurY;
         
     }
+    
+    ////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////Geters et Seters/////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
     
     public int getLongueurX(){
         

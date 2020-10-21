@@ -8,6 +8,8 @@ package projetconcept;
 /**
  *
  * @author Toine
+ * 
+ * Enumération des directions possibles
  */
 enum Direction {
     

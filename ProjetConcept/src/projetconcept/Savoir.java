@@ -13,11 +13,19 @@ import java.util.ArrayList;
  */
 public class Savoir {
     
-    Aleatoire AJE;
+    Aleatoire AJE;       /*Instance de la classe Aléatoire qui nous servira pour tous nos bessoins en terme de hasard*/
     
-    ArrayList<Message> messages;
+    ArrayList<Message> messages;        /*Liste des messages qui constituent le Savoir*/
     
-    int nombreMessages;   
+    int nombreMessages;             /*Nombre de Messages contenus*/
+    
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Constructeur
+    */
     
     
     public Savoir(){
@@ -27,6 +35,14 @@ public class Savoir {
         nombreMessages = 0;
         
     }
+    
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Methode permettant de se cumuler à un autre savoir
+    */
     
     public void cumulDesSavoirs(Savoir pSavoir){
         
@@ -54,6 +70,14 @@ public class Savoir {
     }
     
     
+    /**
+    *
+    * @author Toine
+    * 
+    * Methode permetant de se cumuler partiellement à un autre Savoir
+    */
+    
+    
     public void partagePartielDesSavoir(Savoir pSavoir){
         
         for (int i = 0; i<pSavoir.messages.size(); i++){
@@ -78,6 +102,14 @@ public class Savoir {
         
         
     }
+    
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Methode permettant transferer des messages d'un Savoir à un autre aléatoirement
+    */
     
     public void confrontationDesSavoir(Savoir pSavoir){
         
@@ -116,6 +148,13 @@ public class Savoir {
     }
     
     
+    /**
+    *
+    * @author Toine
+    * 
+    * Methode permetant de retirer un message du savoir
+    */
+    
     public void perdreMessage(int messageID){
         
         for (int i = 0; i < this.messages.size(); i++){
@@ -129,6 +168,13 @@ public class Savoir {
         }        
         
     }
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Méthode permetant de savoir si un message n'est PAS présent dans le Savoir
+    */
     
     public boolean notIn(Message pMessage){
         
@@ -146,6 +192,11 @@ public class Savoir {
         return bool;
         
     }
+    
+    
+    ////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////Geters et Seters/////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
     
     public ArrayList<Message> getMessages(){
         

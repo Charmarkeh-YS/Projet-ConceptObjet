@@ -11,6 +11,8 @@ import java.util.Random;
 /**
  *
  * @author Toine
+ * 
+ * Boite à outils du Hasard
  */
 public class Aleatoire {
     

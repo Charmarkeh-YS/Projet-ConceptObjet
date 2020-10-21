@@ -9,14 +9,32 @@ package projetconcept;
 /**
  *
  * @author Toine
+ * 
+ * Un Elfe est un EtreVivant
  */
 public class Elfe extends EtreVivant{
+    
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Constructeur
+    */
     
     public Elfe(Carte pCarte){
         
         super(pCarte);
         
     }
+    
+    
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////
+    //////////Redefinission des fonctions de base (Equal, toString...)//////////
+    ////////////////////////////////////////////////////////////////////////////
     
     @Override
     public String toString(){

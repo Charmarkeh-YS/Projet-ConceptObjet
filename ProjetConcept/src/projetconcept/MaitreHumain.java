@@ -8,6 +8,8 @@ package projetconcept;
 /**
  *
  * @author Toine
+ * 
+ * Un MaitreHumain est un Humain
  */
 public class MaitreHumain extends Humain{
     

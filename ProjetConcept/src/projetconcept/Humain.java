@@ -8,8 +8,18 @@ package projetconcept;
 /**
  *
  * @author Toine
+ * 
+ * Un Humain est un EtreVivant
  */
 public class Humain extends EtreVivant {
+    
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Constructeur
+    */
     
     public Humain(Carte pCarte){
         
@@ -17,6 +27,13 @@ public class Humain extends EtreVivant {
         
     }
     
+    
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////
+    //////////Redefinission des fonctions de base (Equal, toString...)//////////
+    ////////////////////////////////////////////////////////////////////////////
     
     @Override
     public String toString(){

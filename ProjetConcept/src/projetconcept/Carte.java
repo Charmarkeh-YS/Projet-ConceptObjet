@@ -14,10 +14,17 @@ import java.util.Random;
  */
 public class Carte {
     
-    Aleatoire AJE;
+    Aleatoire AJE;          /*Instance de la classe Aléatoire qui nous servira pour tous nos bessoins en terme de hasard*/
     
     private ArrayList<Case> cases;
     private Dimensions dimensions;
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Constructeur, une carte a bession de dimensions
+    */
     
     public Carte(Dimensions pDimenssions){
         
@@ -26,6 +33,15 @@ public class Carte {
         cases = creationCases(dimensions);
         
     }
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Création des cases qui forment la carte, exemple de la répartion des coordonnées pour Dimenssions -> x=2 ; y=3
+    * 
+    * [(0,0)(1,0)(0,1)(1,1)(0,2)(1,2)]
+    */
     
     public ArrayList<Case> creationCases(Dimensions pDimenssionsCarte){
         
@@ -46,6 +62,13 @@ public class Carte {
         return listeCases;      
         
     }
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Retourne les cases voisines d'une case passée en parametre
+    */
     
     
     public ArrayList<Case> voisons(Case pCase){
@@ -77,6 +100,14 @@ public class Carte {
         
     }
     
+    
+        /**
+    *
+    * @author Toine
+    * 
+    * Retourne une case à partir de ses coordonnées
+    */
+    
     public Case chercherCase(int pX, int pY){
         
         int idCase = -1;
@@ -97,19 +128,15 @@ public class Carte {
         
     }
     
-    public ArrayList<Case> getCases(){
-        
-        return this.cases;
-        
-    }
     
-    public Dimensions getDimensions(){
-        
-        
-        return this.dimensions;
-        
-    }
+        /**
+    *
+    * @author Toine
+    * 
+    * Ajoute des EtreVivant sur la carte aléatoirement
+    */
     
+        
     public void ajoutEtresVivants(ArrayList<EtreVivant> liste){
         
         Random random = new Random();
@@ -140,6 +167,14 @@ public class Carte {
         
     }
     
+    
+        /**
+    *
+    * @author Toine
+    * 
+    * Affiche la carte 
+    */
+    
     public void afficherCarte(){
         
         String ligne = new String();
@@ -166,6 +201,36 @@ public class Carte {
         
         
         System.out.println("\nLégende : Humain = @ ; Elfe =  + ; Gobelin = O ; Orque = #");
+        
+    }
+    
+    ////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////Geters et Seters/////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    
+    
+    public ArrayList<Case> getCases(){
+        
+        return this.cases;
+        
+    }
+    
+    public Dimensions getDimensions(){
+        
+        
+        return this.dimensions;
+        
+    }
+    
+    public void setCases( ArrayList<Case> pCases){
+        
+        this.cases = pCases;
+        
+    }
+    
+    public void setDimensions(Dimensions pDimensions){
+        
+        this.dimensions = pDimensions;
         
     }
 }

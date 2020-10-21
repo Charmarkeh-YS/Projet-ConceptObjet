@@ -16,18 +16,26 @@ import java.util.Random;
  */
 abstract class EtreVivant {
     
-    Aleatoire AJE;
+    Aleatoire AJE;      /*Instance de la classe Aléatoire qui nous servira pour tous nos bessoins en terme de hasard*/
     
-    private final int PE_DE_BASE = 100;
-    private final int PE_CRITIQUE = 10;
+    private final int PE_DE_BASE = 100;     /*Nombre de PE  à la création d'un etre vivant*/
+    private final int PE_CRITIQUE = 10;     /*Nombre de PE e dessous duquel l'etre vivant retoure à sa safezone*/
     
-    private Savoir savoir;
-    private int pE;
-    private Direction derniereDirection;
-    private Alliance alliance;
-    private Case caseCourante;
-    private Carte carte;
+    private Savoir savoir;      /*Instance d'un objet Savoir qui contient les messages connus par l'etre vivant*/
+    private int pE;             /*Nombre de PE actuel*/
+    private Direction derniereDirection;    /*Derniere direction prise*/
+    private Alliance alliance;              /*Alliance à laquelle apartient l'etre vivant*/
+    private Case caseCourante;              /*Case actuelle occupé par l'etre vivant*/
+    private Carte carte;                    /*Carte du jeu sur lequel se trouve l'etre vivant*/
         
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Constructeur, un etre vivant doit etre sur une carte
+    */
+    
     public EtreVivant(Carte pCarte){      
         
         savoir = new Savoir();
@@ -38,29 +46,41 @@ abstract class EtreVivant {
           
     }    
     
+    /**
+    *
+    * @author Toine
+    * 
+    * Methode lance le tour d'un etre vivant
+    */
+    
     public void move(){
         
         
         
-        if (pE > PE_CRITIQUE){
+        if (pE >= PE_CRITIQUE){
             
-            System.out.println("X : " + this.caseCourante.getX() + " Y :" + this.caseCourante.getY());
-            
-            this.rechercheMessages();
+            this.rechercheMessages();       /*Si on a assez de PE, on explore la carte pour essayer de trouver de nouveaux messages*/
             
         }
         
         else{
             
-            this.retourSafeZone();
+            this.retourSafeZone();          /*Sinon on rentre à la safezone*/
             
         }                
         
-        System.out.println("X : " + this.caseCourante.getX() + " Y :" + this.caseCourante.getY());
-        
     }
     
-    public boolean changerCase(Case caseApres){
+    /**
+    *
+    * @author Toine
+    * @param caseApres Case sur laquelle on veut se rendre
+    * @return On retourne un flage true si on a pas pu effectuer le changement
+    * 
+    * Cette méthode effectue le changement de case, on libere notre case puis on se met sur une autre
+    */
+    
+    public boolean changerCase(Case caseApres){     
         
         boolean flag = false;
         
@@ -88,6 +108,20 @@ abstract class EtreVivant {
         
     }
     
+    /**
+    *
+    * @author Toine
+    * @param autre Etre vivant que l'on rencontre
+    * 
+    * 
+    * Methode définissant la rencontre avec un autre etre vivant, trois cas possible:
+    *
+    *   - Meme espece : On cumul nos savoirs
+    *   - Autre Expece Meme alliance : On partage un peu de savoir 
+    *   - Autre Espece autre Alliance : Un des deux prend du savoir de l'autre
+    *
+    */
+    
     public void rencontrer(EtreVivant autre){
         
         if (this.alliance == autre.alliance){
@@ -107,17 +141,34 @@ abstract class EtreVivant {
         
         else{
             
-            this.savoir.cumulDesSavoirs(autre.getSavoir());
+            this.savoir.confrontationDesSavoir(autre.getSavoir());
             
         }
         
     }
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Methode definissant le retour à la safezone
+    */
     
     public void retourSafeZone(){
         
         
         
     }
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Methode définissant la maniere dont se déplace un etre vivant lorsqu'il part à la recherche de messages
+    * 
+    * On s'arrete lorsque l'on est à coté de quelqu'un ou bien que l'on est bloqué, une fois arreté on rencontre le voisinage
+    * 
+    */
     
     public void rechercheMessages(){
         
@@ -137,6 +188,13 @@ abstract class EtreVivant {
         
     }
     
+        /**
+    *
+    * @author Toine
+    * 
+    * Methode choisissant aléatoirement la prochaine case sur laquelle on va essayer de se rendre
+    */
+    
     public Case prochaineCase(){
   
         Random random = new Random();
@@ -146,6 +204,13 @@ abstract class EtreVivant {
         return voisins.get(random.nextInt(voisins.size()));
         
     }
+    
+        /**
+    *
+    * @author Toine
+    * 
+    * Methode détectant si quelqu'un se trouve sur une case adjacente
+    */
     
     public ArrayList<Case> scanAlentours(){
         
@@ -166,7 +231,10 @@ abstract class EtreVivant {
         return casesOccupees;
         
     }
-   
+    
+    ////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////Geters et Seters/////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
      
     public int getPE(){
         
@@ -239,6 +307,10 @@ abstract class EtreVivant {
         this.carte = pCarte;
         
     }
+    
+    ////////////////////////////////////////////////////////////////////////////
+    //////////Redefinission des fonctions de base (Equal, toString...)//////////
+    ////////////////////////////////////////////////////////////////////////////
     
     @Override
     public abstract String toString();

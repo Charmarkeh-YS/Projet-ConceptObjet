@@ -8,8 +8,19 @@ package projetconcept;
 /**
  *
  * @author Toine
+ *
+ * Un Orque est un EtreVivant
  */
 public class Orque extends EtreVivant{
+    
+    
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Constructeur
+    */
     
     
     public Orque(Carte pCarte){
@@ -17,6 +28,13 @@ public class Orque extends EtreVivant{
         super(pCarte);
         
     }
+    
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////
+    //////////Redefinission des fonctions de base (Equal, toString...)//////////
+    ////////////////////////////////////////////////////////////////////////////
     
     @Override
     public String toString(){
