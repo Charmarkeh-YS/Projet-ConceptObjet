@@ -21,7 +21,7 @@ public class ProjetConcept {
      */
     public static void main(String[] args) {
         
-        Dimensions dim = new Dimensions(7, 5);
+        Dimensions dim = new Dimensions(20, 12);
         
         Carte carte = new Carte(dim);
         
@@ -48,21 +48,28 @@ public class ProjetConcept {
         
         /*4 fois de suite on bouge un EtreVivant puis on affiche la carte*/
         
-        hu.move();
+        for (int i = 0; i < 10; i++){
+            
+            hu.move();
         
-        carte.afficherCarte();
+            carte.afficherCarte();
         
-        el.move();
+            el.move();
         
-        carte.afficherCarte();
+            carte.afficherCarte();
         
-        oc.move();
+            oc.move();
         
-        carte.afficherCarte();
+            carte.afficherCarte();
         
-        go.move();
+            go.move();
         
-        carte.afficherCarte();
+            carte.afficherCarte();
+            
+            
+        }
+        
+        
         
     }
     

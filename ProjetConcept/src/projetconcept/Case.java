@@ -83,6 +83,25 @@ public class Case {
         
     }
     
+    public Direction directionAPrendre(Case caseCible){
+        
+        Direction direction = Direction.FIXE;
+        
+        int difX = caseCible.getX() - this.getX();
+        int difY = caseCible.getY() - this.getY();
+        
+        for (int i = 0; i < Direction.values().length; i++){
+            
+            if (Direction.values()[i].getDifX() == difX && Direction.values()[i].getDifY() == difY)            
+            
+                direction = Direction.values()[i];
+                
+        }        
+     
+        return direction;     
+  
+    }
+    
     ////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////Geters et Seters/////////////////////////////
     ////////////////////////////////////////////////////////////////////////////

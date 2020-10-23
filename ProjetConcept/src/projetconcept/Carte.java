@@ -63,72 +63,6 @@ public class Carte {
         
     }
     
-    /**
-    *
-    * @author Toine
-    * 
-    * Retourne les cases voisines d'une case passée en parametre
-    */
-    
-    
-    public ArrayList<Case> voisons(Case pCase){
-        
-        ArrayList<Case> voisins = new ArrayList<>();
-        
-        int[][] coor =
-            {
-                { -1, -1},
-                { -1, 0 },
-                { -1, 1}, 
-                { 0, -1}, 
-                { 0, 1}, 
-                { 1, -1}, 
-                { 1, 0}, 
-                { 1, 1} 
-            }; 
-        
-        for (int i = 0; i < 8; i++){
-            
-            if (pCase.getX() + coor[i][0] > 0 && pCase.getY() + coor[i][1] > 0 && pCase.getX() + coor[i][0] < this.dimensions.getLongueurX() - 1 && pCase.getY() + coor[i][1] < this.dimensions.getLongueurY()){
-                
-                voisins.add(this.chercherCase(pCase.getX() + coor[i][0], pCase.getY() + coor[i][1]));                
-            }
-            
-        }
-        
-        return voisins;
-        
-    }
-    
-    
-        /**
-    *
-    * @author Toine
-    * 
-    * Retourne une case à partir de ses coordonnées
-    */
-    
-    public Case chercherCase(int pX, int pY){
-        
-        int idCase = -1;
-        
-        
-        
-        for (int i = 0; i < this.cases.size(); i++){
-            
-            if (this.cases.get(i).getX() == pX && this.cases.get(i).getY() == pY){
-                
-                idCase = i;
-                
-            }
-            
-        }
-        
-        return this.cases.get(idCase);
-        
-    }
-    
-    
         /**
     *
     * @author Toine
@@ -203,6 +137,67 @@ public class Carte {
         System.out.println("\nLégende : Humain = @ ; Elfe =  + ; Gobelin = O ; Orque = #");
         
     }
+    
+    
+    ////////////////////////////////////////////////////////////////////////////
+    ////////////////////////Méthodes Scondaires/////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    
+    
+        /**
+    *
+    * @author Toine
+    * 
+    * Retourne une case à partir de ses coordonnées
+    */
+    
+    public Case chercherCase(int pX, int pY){
+        
+        int idCase = -1;
+        
+        
+        
+        for (int i = 0; i < this.cases.size(); i++){
+            
+            if (this.cases.get(i).getX() == pX && this.cases.get(i).getY() == pY){
+                
+                idCase = i;
+                
+            }
+            
+        }
+        
+        return this.cases.get(idCase);
+        
+    }
+    
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Retourne les cases voisines d'une case passée en parametre
+    */
+    
+    
+    public ArrayList<Case> voisins(Case pCase, Direction directionProhibee){
+        
+        ArrayList<Case> voisinsListe = new ArrayList<>();
+        
+        Direction[] direction = {Direction.EST, Direction.NORD, Direction.NORDEST, Direction.NORDOUEST, Direction.OUEST, Direction.SUD, Direction.SUDEST, Direction.SUDOUEST}; 
+        
+        for (int i = 0; i < 8; i++){
+            
+            if (pCase.getX() + direction[i].getDifX() > 0 && pCase.getY() + direction[i].getDifY() > 0 && pCase.getX() + direction[i].getDifX() < this.dimensions.getLongueurX() - 1 && pCase.getY() + direction[i].getDifY() < this.dimensions.getLongueurY() && direction[i] != directionProhibee){
+                
+                voisinsListe.add(this.chercherCase(pCase.getX() + direction[i].getDifX(), pCase.getY() + direction[i].getDifY()));                
+            }
+            
+        }
+        
+        return voisinsListe;
+        
+    } 
     
     ////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////Geters et Seters/////////////////////////////

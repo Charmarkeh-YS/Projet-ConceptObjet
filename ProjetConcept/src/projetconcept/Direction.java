@@ -13,22 +13,62 @@ package projetconcept;
  */
 enum Direction {
     
-    NORD("Nord"),
-    NORDEST("Nord-Est"),
-    NORDOUEST("Nord-Ouest"),
-    SUD("Sud"),
-    SUDEST("Sud-Est"),
-    SUDOUEST("Sud-Ouest"),
-    EST("Est"),
-    OUEST("Ouest"),
-    FIXE("Fixe");
+    NORD("Nord", 0, 1),
+    NORDEST("Nord-Est", 1, 1),
+    NORDOUEST("Nord-Ouest", -1, 1),
+    SUD("Sud", 0, -1),
+    SUDEST("Sud-Est", 1, -1),
+    SUDOUEST("Sud-Ouest", -1, -1),
+    EST("Est", 1, 0),
+    OUEST("Ouest", -1, -1),
+    FIXE("Fixe", 0, 0);
     
     
     private final String nom;  
+    private final int difX;
+    private final int difY;
 
-    Direction(String nom){
+    Direction(String nom, int pDifX, int pDifY){
         
-        this.nom = nom;    
+        this.nom = nom;
+        this.difX = pDifY;
+        this.difY = pDifX;
+        
+    }
+    
+    public Direction oppose(){
+        
+        Direction oppose = Direction.FIXE;
+        
+        switch(this){
+            
+            case EST : oppose = Direction.OUEST;
+            break;
+            
+            case OUEST : oppose = Direction.EST;
+            break;
+            
+            case NORD : oppose = Direction.SUD;
+            break;
+            
+            case SUD : oppose = Direction.NORD;
+            break;
+            
+            case NORDEST : oppose = Direction.SUDOUEST;
+            break;
+            
+            case SUDEST : oppose = Direction.NORDOUEST;
+            break;
+            
+            case NORDOUEST : oppose = Direction.NORDEST;
+            break;
+            
+            case SUDOUEST : oppose = Direction.SUDEST;
+            break;          
+      
+        }
+ 
+        return oppose;
         
     }
 
@@ -38,4 +78,15 @@ enum Direction {
         
     }
     
+    public int getDifX(){
+        
+        return this.difX; 
+        
+    }
+    
+    public int getDifY(){
+        
+        return this.difY; 
+        
+    }
 }

@@ -27,6 +27,8 @@ abstract class EtreVivant {
     private Alliance alliance;              /*Alliance à laquelle apartient l'etre vivant*/
     private Case caseCourante;              /*Case actuelle occupé par l'etre vivant*/
     private Carte carte;                    /*Carte du jeu sur lequel se trouve l'etre vivant*/
+    private ArrayList<EtreVivant> dernieresRencontres;
+    
         
     
     /**
@@ -43,6 +45,7 @@ abstract class EtreVivant {
         derniereDirection = Direction.FIXE;
         carte = pCarte;
         caseCourante = new Case();
+        dernieresRencontres = new ArrayList<>();
           
     }    
     
@@ -71,42 +74,6 @@ abstract class EtreVivant {
         
     }
     
-    /**
-    *
-    * @author Toine
-    * @param caseApres Case sur laquelle on veut se rendre
-    * @return On retourne un flage true si on a pas pu effectuer le changement
-    * 
-    * Cette méthode effectue le changement de case, on libere notre case puis on se met sur une autre
-    */
-    
-    public boolean changerCase(Case caseApres){     
-        
-        boolean flag = false;
-        
-        if (caseApres.isEmpty()){
-        
-            this.caseCourante.vider();
-            
-            this.caseCourante.occupee = false;
-        
-            this.caseCourante = caseApres;
-        
-            this.caseCourante.setContenu(this);
-            
-            this.caseCourante.occupee = true;
-        
-        }
-        
-        else{
-            
-            flag = true;
-            
-        }
-        
-        return flag;
-        
-    }
     
     /**
     *
@@ -145,6 +112,57 @@ abstract class EtreVivant {
             
         }
         
+        autre.addRencontre(this);
+        
+    }
+    
+    
+    ////////////////////////////////////////////////////////////////////////////
+    ///////////////////////Méthodes Secondaires/////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    
+    
+    /**
+    *
+    * @author Toine
+    * @param caseApres Case sur laquelle on veut se rendre
+    * @return On retourne un flage true si on a pas pu effectuer le changement
+    * 
+    * Cette méthode effectue le changement de case, on libere notre case puis on se met sur une autre
+    */
+    
+    public boolean changerCase(Case caseApres){     
+        
+        boolean flag = false;
+        
+        Direction nouvelleDirection = this.caseCourante.directionAPrendre(caseApres);
+        
+        if (caseApres.isEmpty()){
+        
+            this.caseCourante.vider();
+            
+            this.caseCourante.occupee = false;
+        
+            this.caseCourante = caseApres;
+        
+            this.caseCourante.setContenu(this);
+            
+            this.caseCourante.occupee = true;
+            
+            this.derniereDirection = nouvelleDirection;
+        
+        }
+        
+        else{
+            
+            flag = true;
+            
+            
+            
+        }
+        
+        return flag;
+        
     }
     
     /**
@@ -174,17 +192,22 @@ abstract class EtreVivant {
         
         boolean flag = false;
         
+        int tours = 0;
+        
         while(scanAlentours().isEmpty() && !flag){
             
             flag = this.changerCase(this.prochaineCase());
+            tours++;
             
         }
         
         for (int i = 0; i < scanAlentours().size(); i++){
             
-            rencontrer((EtreVivant) scanAlentours().get(i).getContenu());
-            
+            this.dernieresRencontres.add((EtreVivant) scanAlentours().get(i).getContenu());              
+     
         }       
+        
+       System.out.println("Nb tours" + tours);
         
     }
     
@@ -199,7 +222,7 @@ abstract class EtreVivant {
   
         Random random = new Random();
         
-        ArrayList<Case> voisins = this.carte.voisons(this.caseCourante);
+        ArrayList<Case> voisins = this.carte.voisins(this.caseCourante, derniereDirection);
               
         return voisins.get(random.nextInt(voisins.size()));
         
@@ -214,13 +237,13 @@ abstract class EtreVivant {
     
     public ArrayList<Case> scanAlentours(){
         
-        ArrayList<Case> voisins = this.carte.voisons(this.caseCourante);
+        ArrayList<Case> voisins = this.carte.voisins(this.caseCourante, Direction.FIXE);
         
         ArrayList<Case> casesOccupees = new ArrayList<>();
         
         for (int i = 0; i< voisins.size(); i++){
             
-            if (voisins.get(i).occupee){
+            if (voisins.get(i).occupee && notInDernieresRencontres((EtreVivant) voisins.get(i).getContenu())){
                 
                 casesOccupees.add(voisins.get(i));
                 
@@ -229,6 +252,31 @@ abstract class EtreVivant {
         }
         
         return casesOccupees;
+        
+    }
+    
+    public boolean notInDernieresRencontres(EtreVivant pEtreVivant){
+        
+        boolean bool = true;
+        
+        for (int i = 0; i < dernieresRencontres.size(); i++){
+            
+            if (pEtreVivant == dernieresRencontres.get(i)){
+                
+                bool = false;
+                
+            }
+            
+            
+        }      
+        
+        return bool;
+        
+    }
+    
+    public void addRencontre(EtreVivant autre){
+        
+        this.dernieresRencontres.add(autre);
         
     }
     
@@ -308,6 +356,7 @@ abstract class EtreVivant {
         
     }
     
+        
     ////////////////////////////////////////////////////////////////////////////
     //////////Redefinission des fonctions de base (Equal, toString...)//////////
     ////////////////////////////////////////////////////////////////////////////
