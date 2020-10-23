@@ -21,7 +21,7 @@ public class ProjetConcept {
      */
     public static void main(String[] args) {
         
-        Dimensions dim = new Dimensions(20, 12);
+        Dimensions dim = new Dimensions(50, 15);
         
         Carte carte = new Carte(dim);
         
@@ -66,6 +66,11 @@ public class ProjetConcept {
         
             carte.afficherCarte();
             
+            for (int k = 0; k < carte.getsafeCases().size(); k++){
+                
+                carte.getsafeCases().get(k).rechargePe();
+                
+            }
             
         }
         

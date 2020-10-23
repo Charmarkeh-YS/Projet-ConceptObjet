@@ -154,7 +154,7 @@ public class Case {
         if (this.isEmpty()){
             
             string = (String) this.contenu;
-            
+                       
         }
         
         if (this.occupee){

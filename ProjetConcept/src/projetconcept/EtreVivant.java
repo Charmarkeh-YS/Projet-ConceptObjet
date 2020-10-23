@@ -18,7 +18,7 @@ abstract class EtreVivant {
     
     Aleatoire AJE;      /*Instance de la classe Aléatoire qui nous servira pour tous nos bessoins en terme de hasard*/
     
-    private final int PE_DE_BASE = 10000;     /*Nombre de PE  à la création d'un etre vivant*/
+    private final int PE_DE_BASE = 100;     /*Nombre de PE  à la création d'un etre vivant*/
     private final int PE_CRITIQUE = 10;     /*Nombre de PE e dessous duquel l'etre vivant retoure à sa safezone*/
     
     private Savoir savoir;      /*Instance d'un objet Savoir qui contient les messages connus par l'etre vivant*/
@@ -59,6 +59,8 @@ abstract class EtreVivant {
     */
     
     public void move(){
+        
+        System.out.println("Reste PE" + this.pE);
         
         boolean flag = false;
         
@@ -150,6 +152,12 @@ abstract class EtreVivant {
             this.caseCourante.occupee = true;
             
             this.pE = pE - 1;
+            
+            if (this.caseCourante.getClass() == SafeCase.class && this.pE < PE_CRITIQUE){
+                
+                flag = true;
+                
+            }
                    
         }
         
@@ -169,58 +177,8 @@ abstract class EtreVivant {
         
     }
     
-    /**
-    *
-    * @author Toine
-    * 
-    * Methode definissant le retour à la safezone
-    */
     
-    public void retourSafeZone(){
-        
-        boolean flag = false;
-        
-        int tours = 0;
-        
-        while(!flag){
-            
-            flag = this.changerCase(this.carte.cheminDirection(this.caseCourante, this.directionSafeZone));
-            tours++;
-            
-        }       
-         
-       System.out.println("Nb tours Safe Find" + tours);
-        
-        
-        
-    }
     
-    /**
-    *
-    * @author Toine
-    * 
-    * Methode définissant la maniere dont se déplace un etre vivant lorsqu'il part à la recherche de messages
-    * 
-    * On s'arrete lorsque l'on est à coté de quelqu'un ou bien que l'on est bloqué, une fois arreté on rencontre le voisinage
-    * 
-    */
-    
-    public void rechercheMessages(){
-        
-        boolean flag = false;
-        
-        int tours = 0;
-        
-        while(!flag){
-            
-            flag = this.changerCase(this.prochaineCase());
-            tours++;
-            
-        }       
-         
-       System.out.println("Nb tours RecercheMessage" + tours);
-        
-    }
     
         /**
     *

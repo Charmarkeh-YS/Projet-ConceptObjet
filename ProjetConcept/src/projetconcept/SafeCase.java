@@ -20,10 +20,21 @@ public class SafeCase extends Case{
     
     public SafeCase(int pX, int pY){
         
-        super();
+        super(pX, pY);
         
     }
     
+    public void rechargePe(){
+        
+        if (super.occupee){
+            
+            EtreVivant contenu = (EtreVivant) super.getContenu();
+            
+            contenu.setPE(contenu.getPE() + 10);
+            
+        }
+        
+    }
     
     ////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////Geters et Seters/////////////////////////////
@@ -41,5 +52,38 @@ public class SafeCase extends Case{
         this.espece = pEspece;
         
     }    
+    
+    ////////////////////////////////////////////////////////////////////////////
+    //////////Redefinission des fonctions de base (Equal, toString...)//////////
+    ////////////////////////////////////////////////////////////////////////////    
+    
+    @Override
+    public String toString(){
+        
+        String string = new String();
+        
+        if (this.isEmpty()){
+            
+            string = (String) super.getContenu();
+            
+            if (string == "-"){
+                
+                string = "=";
+                
+            }
+            
+        }
+        
+        if (this.occupee){
+            
+            EtreVivant temp = (EtreVivant) super.getContenu();
+            
+            string = temp.toString();
+            
+        }
+        
+        return string;
+        
+    }
     
 }

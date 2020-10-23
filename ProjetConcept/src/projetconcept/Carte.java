@@ -17,6 +17,7 @@ public class Carte {
     Aleatoire AJE;          /*Instance de la classe Aléatoire qui nous servira pour tous nos bessoins en terme de hasard*/
     
     private ArrayList<Case> cases;
+    private ArrayList<SafeCase> safeCases;
     private Dimensions dimensions;
     
     /**
@@ -45,16 +46,34 @@ public class Carte {
     
     public ArrayList<Case> creationCases(Dimensions pDimenssionsCarte){
         
+        safeCases = new ArrayList();
+        
         ArrayList<Case> listeCases = new ArrayList<>();
+        
+        int xSafeZone = pDimenssionsCarte.getLongueurX() / 8;
+        int ySafeZone = pDimenssionsCarte.getLongueurY() / 6;
         
         for (int i = 0; i < pDimenssionsCarte.getLongueurY(); i++){
             
             for (int j = 0; j < pDimenssionsCarte.getLongueurX(); j++){
                 
-                Case tempCase = new Case(j, i);
+                if (!((j < xSafeZone && i < ySafeZone) || (j > pDimenssionsCarte.getLongueurX() - xSafeZone - 1 && i > pDimenssionsCarte.getLongueurY() - ySafeZone - 1) || (j < xSafeZone && i > pDimenssionsCarte.getLongueurY() - ySafeZone - 1) ||(j > pDimenssionsCarte.getLongueurX() - xSafeZone - 1 && i < ySafeZone))){
+                    
+                    Case tempCase = new Case(j, i);
                 
-                listeCases.add(tempCase);
-                                              
+                    listeCases.add(tempCase);
+                    
+                }
+                
+                else{
+                    
+                    SafeCase tempSafeCase = new SafeCase(j,i);
+                    
+                    listeCases.add(tempSafeCase);
+                    safeCases.add(tempSafeCase);
+                    
+                }             
+                                                              
             }
             
         }
@@ -157,14 +176,12 @@ public class Carte {
                 
         for (int i = 0; i < directions.size(); i++){
             
-            System.out.println("La case : " + position.getX() + " / " + position.getY() + " LA dir : " + directions.get(i));
             
             if(!(position.getX() + directions.get(i).getDifX() > 0 && position.getY() + directions.get(i).getDifY() > 0 && position.getX() + directions.get(i).getDifX() < this.dimensions.getLongueurX() - 1 && position.getY() + directions.get(i).getDifY() < this.dimensions.getLongueurY())){
             
                 directions.remove(i);
                 i = i - 1;
-                System.out.println("gggg");
-                
+                               
             }            
             
         }
@@ -172,7 +189,7 @@ public class Carte {
         if (!directions.isEmpty()){
             
             chemin = directions.get(random.nextInt(directions.size()));
-            System.out.println(directions);
+            
         }
                 
         else{
@@ -180,16 +197,12 @@ public class Carte {
             if(position.getX() + direction.oppose().getDifX() > 0 && position.getY() + direction.oppose().getDifY() > 0 && position.getX() + direction.oppose().getDifX() < this.dimensions.getLongueurX() - 1 && position.getY() + direction.oppose().getDifY() < this.dimensions.getLongueurY()){
             
                             chemin = direction.oppose();
-                            System.out.println("Her");
-                
+                                           
             }
             
         }           
   
-        
-        System.out.println("X :" + position.getX() + chemin.getDifX() + " Y : " +position.getY() + chemin.getDifY());
-        
-        
+                
         return chercherCase(position.getX() + chemin.getDifX(), position.getY() + chemin.getDifY());
         
     }
@@ -205,8 +218,6 @@ public class Carte {
     public Case chercherCase(int pX, int pY){
         
         int idCase = -1;
-        
-        
         
         for (int i = 0; i < this.cases.size(); i++){
             
@@ -258,6 +269,12 @@ public class Carte {
     public ArrayList<Case> getCases(){
         
         return this.cases;
+        
+    }
+    
+    public ArrayList<SafeCase> getsafeCases(){
+        
+        return this.safeCases;
         
     }
     
