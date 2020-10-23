@@ -113,6 +113,7 @@ abstract class EtreVivant {
         }
         
         autre.addRencontre(this);
+        this.dernieresRencontres.add(autre);
         
     }
     
@@ -134,8 +135,7 @@ abstract class EtreVivant {
     public boolean changerCase(Case caseApres){     
         
         boolean flag = false;
-        
-        Direction nouvelleDirection = this.caseCourante.directionAPrendre(caseApres);
+        this.derniereDirection = this.caseCourante.directionAPrendre(caseApres);
         
         if (caseApres.isEmpty()){
         
@@ -148,16 +148,18 @@ abstract class EtreVivant {
             this.caseCourante.setContenu(this);
             
             this.caseCourante.occupee = true;
-            
-            this.derniereDirection = nouvelleDirection;
-        
+                   
         }
         
         else{
             
             flag = true;
             
-            
+            if (caseApres.occupee && notInDernieresRencontres((EtreVivant) caseApres.getContenu())){
+                
+                rencontrer((EtreVivant) caseApres.getContenu());
+                
+            }
             
         }
         
@@ -194,19 +196,13 @@ abstract class EtreVivant {
         
         int tours = 0;
         
-        while(scanAlentours().isEmpty() && !flag){
+        while(!flag){
             
             flag = this.changerCase(this.prochaineCase());
             tours++;
             
-        }
-        
-        for (int i = 0; i < scanAlentours().size(); i++){
-            
-            this.dernieresRencontres.add((EtreVivant) scanAlentours().get(i).getContenu());              
-     
         }       
-        
+         
        System.out.println("Nb tours" + tours);
         
     }
@@ -228,32 +224,7 @@ abstract class EtreVivant {
         
     }
     
-        /**
-    *
-    * @author Toine
-    * 
-    * Methode détectant si quelqu'un se trouve sur une case adjacente
-    */
-    
-    public ArrayList<Case> scanAlentours(){
-        
-        ArrayList<Case> voisins = this.carte.voisins(this.caseCourante, Direction.FIXE);
-        
-        ArrayList<Case> casesOccupees = new ArrayList<>();
-        
-        for (int i = 0; i< voisins.size(); i++){
-            
-            if (voisins.get(i).occupee && notInDernieresRencontres((EtreVivant) voisins.get(i).getContenu())){
-                
-                casesOccupees.add(voisins.get(i));
-                
-            }
-            
-        }
-        
-        return casesOccupees;
-        
-    }
+     
     
     public boolean notInDernieresRencontres(EtreVivant pEtreVivant){
         
