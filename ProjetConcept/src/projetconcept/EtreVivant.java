@@ -18,7 +18,7 @@ abstract class EtreVivant {
     
     Aleatoire AJE;      /*Instance de la classe Aléatoire qui nous servira pour tous nos bessoins en terme de hasard*/
     
-    private final int PE_DE_BASE = 100;     /*Nombre de PE  à la création d'un etre vivant*/
+    private final int PE_DE_BASE = 10000;     /*Nombre de PE  à la création d'un etre vivant*/
     private final int PE_CRITIQUE = 10;     /*Nombre de PE e dessous duquel l'etre vivant retoure à sa safezone*/
     
     private Savoir savoir;      /*Instance d'un objet Savoir qui contient les messages connus par l'etre vivant*/
@@ -28,6 +28,7 @@ abstract class EtreVivant {
     private Case caseCourante;              /*Case actuelle occupé par l'etre vivant*/
     private Carte carte;                    /*Carte du jeu sur lequel se trouve l'etre vivant*/
     private ArrayList<EtreVivant> dernieresRencontres;
+    private Direction directionSafeZone;
     
         
     
@@ -38,7 +39,7 @@ abstract class EtreVivant {
     * Constructeur, un etre vivant doit etre sur une carte
     */
     
-    public EtreVivant(Carte pCarte){      
+    public EtreVivant(Carte pCarte, Direction pDirectionSafeZone){      
         
         savoir = new Savoir();
         pE = PE_DE_BASE;
@@ -46,7 +47,8 @@ abstract class EtreVivant {
         carte = pCarte;
         caseCourante = new Case();
         dernieresRencontres = new ArrayList<>();
-          
+        directionSafeZone = pDirectionSafeZone;  
+        
     }    
     
     /**
@@ -58,20 +60,18 @@ abstract class EtreVivant {
     
     public void move(){
         
+        boolean flag = false;
         
+        int tours = 0;
         
-        if (pE >= PE_CRITIQUE){
+        while(!flag){
             
-            this.rechercheMessages();       /*Si on a assez de PE, on explore la carte pour essayer de trouver de nouveaux messages*/
+            flag = this.changerCase(this.prochaineCase());
+            tours++;
             
-        }
-        
-        else{
-            
-            this.retourSafeZone();          /*Sinon on rentre à la safezone*/
-            
-        }                
-        
+        }       
+         
+       System.out.println("Nb tours RecercheMessage" + tours);
     }
     
     
@@ -148,6 +148,8 @@ abstract class EtreVivant {
             this.caseCourante.setContenu(this);
             
             this.caseCourante.occupee = true;
+            
+            this.pE = pE - 1;
                    
         }
         
@@ -176,6 +178,19 @@ abstract class EtreVivant {
     
     public void retourSafeZone(){
         
+        boolean flag = false;
+        
+        int tours = 0;
+        
+        while(!flag){
+            
+            flag = this.changerCase(this.carte.cheminDirection(this.caseCourante, this.directionSafeZone));
+            tours++;
+            
+        }       
+         
+       System.out.println("Nb tours Safe Find" + tours);
+        
         
         
     }
@@ -203,7 +218,7 @@ abstract class EtreVivant {
             
         }       
          
-       System.out.println("Nb tours" + tours);
+       System.out.println("Nb tours RecercheMessage" + tours);
         
     }
     
@@ -216,11 +231,25 @@ abstract class EtreVivant {
     
     public Case prochaineCase(){
   
-        Random random = new Random();
+        Case prochaineCase = new Case();
         
-        ArrayList<Case> voisins = this.carte.voisins(this.caseCourante, derniereDirection);
+        if (pE >= PE_CRITIQUE){
+        
+            Random random = new Random();
+        
+            ArrayList<Case> voisins = this.carte.voisins(this.caseCourante, derniereDirection);
               
-        return voisins.get(random.nextInt(voisins.size()));
+            prochaineCase = voisins.get(random.nextInt(voisins.size()));
+        
+        }
+        
+        else{
+            
+            prochaineCase = this.carte.cheminDirection(this.caseCourante, this.directionSafeZone);
+            
+        }
+        
+        return prochaineCase;
         
     }
     

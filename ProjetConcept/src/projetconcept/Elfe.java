@@ -14,8 +14,7 @@ package projetconcept;
  */
 public class Elfe extends EtreVivant{
     
-    
-    /**
+     /**
     *
     * @author Toine
     * 
@@ -24,7 +23,7 @@ public class Elfe extends EtreVivant{
     
     public Elfe(Carte pCarte){
         
-        super(pCarte);
+        super(pCarte, Direction.SUDEST);
         
     }
     

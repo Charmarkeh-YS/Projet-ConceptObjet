@@ -23,9 +23,10 @@ public class Humain extends EtreVivant {
     
     public Humain(Carte pCarte){
         
-        super(pCarte);
+        super(pCarte, Direction.NORDEST);
         
     }
+    
     
     
     

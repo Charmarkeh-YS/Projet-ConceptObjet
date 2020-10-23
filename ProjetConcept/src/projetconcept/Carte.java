@@ -143,6 +143,57 @@ public class Carte {
     ////////////////////////Méthodes Scondaires/////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////
     
+    public Case cheminDirection(Case position, Direction direction){
+        
+        ArrayList<Direction> directions = new ArrayList();
+        
+        Direction chemin = Direction.FIXE;
+        
+        Random random = new Random();
+        
+        directions.add(direction.voisins()[0]);
+        directions.add(direction.voisins()[1]);
+        directions.add(direction);
+                
+        for (int i = 0; i < directions.size(); i++){
+            
+            System.out.println("La case : " + position.getX() + " / " + position.getY() + " LA dir : " + directions.get(i));
+            
+            if(!(position.getX() + directions.get(i).getDifX() > 0 && position.getY() + directions.get(i).getDifY() > 0 && position.getX() + directions.get(i).getDifX() < this.dimensions.getLongueurX() - 1 && position.getY() + directions.get(i).getDifY() < this.dimensions.getLongueurY())){
+            
+                directions.remove(i);
+                i = i - 1;
+                System.out.println("gggg");
+                
+            }            
+            
+        }
+        
+        if (!directions.isEmpty()){
+            
+            chemin = directions.get(random.nextInt(directions.size()));
+            System.out.println(directions);
+        }
+                
+        else{
+            
+            if(position.getX() + direction.oppose().getDifX() > 0 && position.getY() + direction.oppose().getDifY() > 0 && position.getX() + direction.oppose().getDifX() < this.dimensions.getLongueurX() - 1 && position.getY() + direction.oppose().getDifY() < this.dimensions.getLongueurY()){
+            
+                            chemin = direction.oppose();
+                            System.out.println("Her");
+                
+            }
+            
+        }           
+  
+        
+        System.out.println("X :" + position.getX() + chemin.getDifX() + " Y : " +position.getY() + chemin.getDifY());
+        
+        
+        return chercherCase(position.getX() + chemin.getDifX(), position.getY() + chemin.getDifY());
+        
+    }
+    
     
         /**
     *

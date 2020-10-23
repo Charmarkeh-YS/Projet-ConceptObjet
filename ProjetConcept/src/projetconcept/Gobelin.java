@@ -23,11 +23,9 @@ public class Gobelin extends EtreVivant{
     
     public Gobelin(Carte pCarte){
         
-        super(pCarte);
+        super(pCarte, Direction.SUDOUEST);
         
     }
-    
-    
     
     
     

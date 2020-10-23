@@ -72,6 +72,58 @@ enum Direction {
         
     }
 
+    public Direction[] voisins(){
+        
+        Direction[] voisins = {Direction.FIXE, Direction.FIXE};
+        
+        switch(this){
+            
+            case EST : 
+                voisins[0] = Direction.NORDEST;
+                voisins[1] = Direction.SUDEST;                        
+            break;
+            
+            case OUEST :
+                voisins[0] = Direction.NORDOUEST;
+                voisins[1] = Direction.SUDOUEST; 
+            break;
+            
+            case NORD :
+                voisins[0] = Direction.NORDEST;
+                voisins[1] = Direction.NORDOUEST; 
+            break;
+            
+            case SUD :
+                voisins[0] = Direction.SUDEST;
+                voisins[1] = Direction.SUDOUEST; 
+            break;
+            
+            case NORDEST : 
+                voisins[0] = Direction.NORD;
+                voisins[1] = Direction.EST; 
+            break;
+            
+            case SUDEST : 
+                voisins[0] = Direction.EST;
+                voisins[1] = Direction.SUD; 
+            break;
+            
+            case NORDOUEST : 
+                voisins[0] = Direction.NORD;
+                voisins[1] = Direction.OUEST; 
+            break;
+            
+            case SUDOUEST : 
+                voisins[0] = Direction.OUEST;
+                voisins[1] = Direction.SUD; 
+            break;          
+      
+        }
+ 
+        return voisins;
+    
+    }
+    
     public String getNom(){
         
         return this.nom; 

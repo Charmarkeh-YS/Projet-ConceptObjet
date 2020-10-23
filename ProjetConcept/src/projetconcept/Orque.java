@@ -13,24 +13,19 @@ package projetconcept;
  */
 public class Orque extends EtreVivant{
     
-    
-    
     /**
     *
     * @author Toine
     * 
     * Constructeur
     */
-    
-    
+       
     public Orque(Carte pCarte){
         
-        super(pCarte);
+        super(pCarte, Direction.NORDOUEST);
         
     }
-    
-    
-    
+   
     
     ////////////////////////////////////////////////////////////////////////////
     //////////Redefinission des fonctions de base (Equal, toString...)//////////
