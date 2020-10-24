@@ -53,8 +53,8 @@ public class Carte {
         
         ArrayList<Case> listeCases = new ArrayList<>();
         
-        int xSafeZone = pDimenssionsCarte.getLongueurX() / 8;
-        int ySafeZone = pDimenssionsCarte.getLongueurY() / 6;
+        int xSafeZone = pDimenssionsCarte.getLongueurX() / 4;
+        int ySafeZone = pDimenssionsCarte.getLongueurY() / 4;
         
         for (int i = 0; i < pDimenssionsCarte.getLongueurY(); i++){
             
@@ -158,7 +158,7 @@ public class Carte {
         
         String ligne = new String();
         
-        System.out.println("Cases : " + this.cases);
+        //System.out.println("Cases : " + this.cases);
         
         System.out.println("Carte : ");
         

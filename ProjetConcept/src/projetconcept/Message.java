@@ -13,11 +13,12 @@ public class Message {
     
     private int iD; /*id unique permetant de différencier les messages sans les comparer*/
     
-    /*Ajouter le contenu du message, String ?*/
+    private String contenu;
     
-    public Message(){
+    public Message(String pContenu, int pID){
         
-        
+        this.contenu = pContenu;
+        this.iD = pID;
         
     }
     
@@ -35,6 +36,18 @@ public class Message {
     public void setID(int pID){
         
         this.iD = pID;
+        
+    }
+    
+    public String getContenu(){
+        
+        return this.contenu;
+        
+    }
+    
+    public void setContenu(String pContenu){
+        
+        this.contenu = pContenu;
         
     }
     

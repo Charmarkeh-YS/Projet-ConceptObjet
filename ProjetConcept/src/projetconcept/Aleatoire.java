@@ -16,6 +16,12 @@ import java.util.Random;
  */
 public class Aleatoire {
     
+    
+    public Aleatoire(){
+        
+        
+    }
+    
     public boolean pileOuFace(){
         
         boolean bool = true;

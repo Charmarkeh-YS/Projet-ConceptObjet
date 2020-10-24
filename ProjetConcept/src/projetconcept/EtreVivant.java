@@ -60,20 +60,19 @@ abstract class EtreVivant {
     
     public void move(){
         
-        System.out.println("Reste PE" + this.pE);
+        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&Debut tour de : " + this + " Reste PE : " + this.pE + " X : " + this.caseCourante.getX() + " Y : " + this.caseCourante.getY() + "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");        
+        
+        this.carte.afficherCarte();
         
         boolean flag = false;
-        
-        int tours = 0;
         
         while(!flag){               
             
             flag = this.changerCase(this.prochaineCase());
-            tours++;
-            
+           
         }       
-         
-       System.out.println("Nb tours RecercheMessage" + tours);
+        
+        this.carte.afficherCarte();
     }
     
     
@@ -92,6 +91,13 @@ abstract class EtreVivant {
     */
     
     public void rencontrer(EtreVivant autre){
+        
+        this.carte.afficherCarte();
+        
+        System.out.println("Rencontre avec : " + autre);
+        System.out.println("Savoir avant Rencontre : ");
+        System.out.println(this + " " + this.savoir.toString());
+        System.out.println(autre + " " + autre.getSavoir().toString());
         
         if (this.alliance == autre.alliance){
             
@@ -117,6 +123,10 @@ abstract class EtreVivant {
         autre.addRencontre(this);
         this.dernieresRencontres.add(autre);
         
+        System.out.println("Savoirs aprés rencontre :");
+        System.out.println(this + " " + this.savoir.toString());
+        System.out.println(autre + " " + autre.getSavoir().toString());
+        
     }
     
     
@@ -139,6 +149,10 @@ abstract class EtreVivant {
         boolean flag = false;
         this.derniereDirection = this.caseCourante.directionAPrendre(caseApres);
         
+        System.out.println("Tour de : " + this + " Reste PE : " + this.pE + " X : " + this.caseCourante.getX() + " Y : " + this.caseCourante.getY());
+        
+        System.out.println("Tentative pour atteindre : " + caseApres.getX() + " / " + caseApres.getY());
+        
         if(!(caseApres.getClass() == SafeCase.class)){
             
             if (caseApres.isEmpty()){
@@ -154,6 +168,7 @@ abstract class EtreVivant {
                 this.caseCourante.occupee = true;
             
                 this.pE = pE - 1;            
+                
                    
             }
         
@@ -192,9 +207,12 @@ abstract class EtreVivant {
             
                 this.pE = pE - 1;
             
-                flag = true;
-                
-                System.out.println("Arrivé A La SafeZone !!!!!!!!!!!!!!!!" + this.pE);              
+                if (this.pE < PE_CRITIQUE){
+                    
+                    flag = true;
+                    
+                }
+                              
             }
         
             else{
@@ -213,12 +231,14 @@ abstract class EtreVivant {
             
             else{
                 
-                flag = true;
+                System.out.println("Tentavite Intrusion SafeZone Adverse Rejetée");
                                 
             }
             
         }
         
+        System.out.println("Nouvelle Case : " + this.caseCourante.getX() + " / " + this.caseCourante.getY());
+                
         return flag;
         
     }
@@ -257,7 +277,7 @@ abstract class EtreVivant {
         
     }
     
-        /**
+    /**
     *
     * @author Toine
     * 

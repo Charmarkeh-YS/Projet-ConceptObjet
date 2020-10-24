@@ -13,11 +13,9 @@ import java.util.ArrayList;
  */
 public class Savoir {
     
-    Aleatoire AJE;       /*Instance de la classe Aléatoire qui nous servira pour tous nos bessoins en terme de hasard*/
+    Aleatoire AJE = new Aleatoire();       /*Instance de la classe Aléatoire qui nous servira pour tous nos bessoins en terme de hasard*/
     
-    ArrayList<Message> messages;        /*Liste des messages qui constituent le Savoir*/
-    
-    int nombreMessages;             /*Nombre de Messages contenus*/
+    private ArrayList<Message> messages;        /*Liste des messages qui constituent le Savoir*/
     
     
     /**
@@ -32,10 +30,14 @@ public class Savoir {
         
         messages = new ArrayList();
         
-        nombreMessages = 0;
-        
     }
     
+    public Savoir(ArrayList<Message> liste){
+        
+        messages = new ArrayList();
+        messages = liste;
+        
+    }
     
     /**
     *
@@ -45,6 +47,8 @@ public class Savoir {
     */
     
     public void cumulDesSavoirs(Savoir pSavoir){
+        
+        System.out.println("Cumul");       
         
         for (int i = 0; i<pSavoir.messages.size(); i++){
             
@@ -80,6 +84,8 @@ public class Savoir {
     
     public void partagePartielDesSavoir(Savoir pSavoir){
         
+        System.out.println("Partage partiel");       
+        
         for (int i = 0; i<pSavoir.messages.size(); i++){
             
             if (notIn(pSavoir.messages.get(i)) && AJE.pileOuFace()){
@@ -113,6 +119,7 @@ public class Savoir {
     
     public void confrontationDesSavoir(Savoir pSavoir){
         
+        System.out.println("Confrontation");        
         
         if (AJE.pileOuFace()){
             
@@ -167,6 +174,7 @@ public class Savoir {
             if (this.messages.get(i).getID() == messageID){
                 
                 this.messages.remove(i);
+                i = i - 1;
                 
             }
             
@@ -209,22 +217,31 @@ public class Savoir {
         
     }
     
-    public int getNombreMessages(){
-        
-        return this.nombreMessages;
-        
-    }
     
     public void setMessages(ArrayList<Message> pMessages){
         
         this.messages = pMessages;
         
         
-    }
+    }   
     
-    public void setNombreMessages(int pNombreMessages){
+    
+    ////////////////////////////////////////////////////////////////////////////
+    //////////Redefinission des fonctions de base (Equal, toString...)//////////
+    ////////////////////////////////////////////////////////////////////////////    
+    
+    @Override
+    public String toString(){
         
-        this.nombreMessages = pNombreMessages;
+        String savoir = "Nombre de messages : " + this.messages.size() + "  ";
+        
+        for (int i = 0; i < this.messages.size(); i++){
+            
+            savoir = savoir + this.messages.get(i).getContenu() + " | ";
+            
+        }
+        
+        return savoir;
         
     }
     

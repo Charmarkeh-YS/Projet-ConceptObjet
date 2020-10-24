@@ -24,6 +24,7 @@ public class Elfe extends EtreVivant{
     public Elfe(Carte pCarte){
         
         super(pCarte, Direction.SUDEST);        //La SafeZone des Elfes est localisée au Sud Est
+        super.setAlliance(Alliance.ATEAM);
         
     }
     

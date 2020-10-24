@@ -24,6 +24,7 @@ public class Humain extends EtreVivant {
     public Humain(Carte pCarte){
         
         super(pCarte, Direction.NORDEST);   //La SafeZone des Humains est localisée au Nord Est
+        super.setAlliance(Alliance.ATEAM);
         
     }
     
