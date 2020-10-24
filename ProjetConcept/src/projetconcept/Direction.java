@@ -36,6 +36,13 @@ enum Direction {
         
     }
     
+    /**
+    *
+    * @author Toine
+    * 
+    * Méthode revoyant l'opposé d'une direction
+    */
+    
     public Direction oppose(){
         
         Direction oppose = Direction.FIXE;
@@ -71,6 +78,13 @@ enum Direction {
         return oppose;
         
     }
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Méthode renvoyant les directions voisines
+    */
 
     public Direction[] voisins(){
         

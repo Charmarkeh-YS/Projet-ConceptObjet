@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class SafeCase extends Case{
     
-    String espece;
+    private Object espece;
     
     
     public SafeCase(int pX, int pY){
@@ -24,13 +24,20 @@ public class SafeCase extends Case{
         
     }
     
+    /**
+    *
+    * @author Toine
+    * 
+    * Méthode permetant de recharger en Pe l'EtreVivant étant sur la SafeCase
+    */
+    
     public void rechargePe(){
         
         if (super.occupee){
             
             EtreVivant contenu = (EtreVivant) super.getContenu();
             
-            contenu.setPE(contenu.getPE() + 10);
+            contenu.setPE(contenu.getPE() + 100);
             
         }
         
@@ -40,14 +47,14 @@ public class SafeCase extends Case{
     ///////////////////////////////Geters et Seters/////////////////////////////
     ////////////////////////////////////////////////////////////////////////////
     
-    public String getEspece(){
+    public Object getEspece(){
         
         return this.espece;
         
     }
     
     
-    public void setEspece(String pEspece){
+    public void setEspece(Object pEspece){
         
         this.espece = pEspece;
         

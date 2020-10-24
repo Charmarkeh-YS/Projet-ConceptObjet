@@ -83,6 +83,13 @@ public class Case {
         
     }
     
+    /**
+    *
+    * @author Toine
+    * 
+    * Méthode La direction dans la laquelle se trouve la case cible (La cible doit etre voisine)
+    */
+    
     public Direction directionAPrendre(Case caseCible){
         
         Direction direction = Direction.FIXE;

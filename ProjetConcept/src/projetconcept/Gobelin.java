@@ -23,7 +23,7 @@ public class Gobelin extends EtreVivant{
     
     public Gobelin(Carte pCarte){
         
-        super(pCarte, Direction.SUDOUEST);
+        super(pCarte, Direction.SUDOUEST);      //La SafeZone des Gobelins est localisée au Sud Ouest
         
     }
     

@@ -22,7 +22,7 @@ public class Orque extends EtreVivant{
        
     public Orque(Carte pCarte){
         
-        super(pCarte, Direction.NORDOUEST);
+        super(pCarte, Direction.NORDOUEST);     //La SafeZone des Orques est localisée au Nord Ouest
         
     }
    

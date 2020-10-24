@@ -42,6 +42,9 @@ public class Carte {
     * Création des cases qui forment la carte, exemple de la répartion des coordonnées pour Dimenssions -> x=2 ; y=3
     * 
     * [(0,0)(1,0)(0,1)(1,1)(0,2)(1,2)]
+    * 
+    * Les SafeCase sont placés aux coins de la carte
+    * 
     */
     
     public ArrayList<Case> creationCases(Dimensions pDimenssionsCarte){
@@ -65,9 +68,32 @@ public class Carte {
                     
                 }
                 
-                else{
+                else{                    
+                    SafeCase tempSafeCase = new SafeCase(j,i);     
                     
-                    SafeCase tempSafeCase = new SafeCase(j,i);
+                    if (j < xSafeZone && i < ySafeZone){
+                        
+                        tempSafeCase.setEspece(Gobelin.class);
+                        
+                    }
+                    
+                    if (j > pDimenssionsCarte.getLongueurX() - xSafeZone - 1 && i > pDimenssionsCarte.getLongueurY() - ySafeZone - 1){
+                        
+                        tempSafeCase.setEspece(Humain.class);
+                        
+                    }
+                    
+                    if (j < xSafeZone && i > pDimenssionsCarte.getLongueurY() - ySafeZone - 1){
+                        
+                        tempSafeCase.setEspece(Elfe.class);
+                        
+                    }
+                    
+                    if (j > pDimenssionsCarte.getLongueurX() - xSafeZone - 1 && i < ySafeZone){
+                        
+                        tempSafeCase.setEspece(Orque.class);
+                        
+                    }                    
                     
                     listeCases.add(tempSafeCase);
                     safeCases.add(tempSafeCase);
@@ -103,9 +129,9 @@ public class Carte {
             
             while (bool){
                 
-                idCase = random.nextInt(this.cases.size() - 1);
+                idCase = random.nextInt(this.cases.size());
                        
-                if (this.cases.get(idCase).isEmpty()){
+                if (this.cases.get(idCase).isEmpty() && this.cases.get(idCase).getClass() != SafeCase.class){
                 
                     liste.get(i).changerCase(this.cases.get(idCase));
                 
@@ -161,6 +187,14 @@ public class Carte {
     ////////////////////////////////////////////////////////////////////////////
     ////////////////////////Méthodes Scondaires/////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////
+    
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Méthode renvoyant la case à choisir prendre rejoindre une direction
+    */
     
     public Case cheminDirection(Case position, Direction direction){
         

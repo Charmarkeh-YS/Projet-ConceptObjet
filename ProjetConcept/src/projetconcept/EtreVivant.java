@@ -66,7 +66,7 @@ abstract class EtreVivant {
         
         int tours = 0;
         
-        while(!flag){
+        while(!flag){               
             
             flag = this.changerCase(this.prochaineCase());
             tours++;
@@ -139,36 +139,82 @@ abstract class EtreVivant {
         boolean flag = false;
         this.derniereDirection = this.caseCourante.directionAPrendre(caseApres);
         
-        if (caseApres.isEmpty()){
+        if(!(caseApres.getClass() == SafeCase.class)){
+            
+            if (caseApres.isEmpty()){
         
-            this.caseCourante.vider();
+                this.caseCourante.vider();
             
-            this.caseCourante.occupee = false;
+                this.caseCourante.occupee = false;
         
-            this.caseCourante = caseApres;
+                this.caseCourante = caseApres;
         
-            this.caseCourante.setContenu(this);
+                this.caseCourante.setContenu(this);
             
-            this.caseCourante.occupee = true;
+                this.caseCourante.occupee = true;
             
-            this.pE = pE - 1;
-            
-            if (this.caseCourante.getClass() == SafeCase.class && this.pE < PE_CRITIQUE){
-                
-                flag = true;
-                
-            }
+                this.pE = pE - 1;            
                    
+            }
+        
+            else{
+            
+                flag = true;
+            
+                    if (caseApres.occupee && notInDernieresRencontres((EtreVivant) caseApres.getContenu())){
+                
+                        rencontrer((EtreVivant) caseApres.getContenu());
+                
+                    }
+            
+                }
+            
+            
         }
         
         else{
             
-            flag = true;
+            SafeCase convertSafe = (SafeCase) caseApres;
             
-            if (caseApres.occupee && notInDernieresRencontres((EtreVivant) caseApres.getContenu())){
+            if (convertSafe.getEspece() == this.getClass()){
                 
-                rencontrer((EtreVivant) caseApres.getContenu());
+                if (caseApres.isEmpty()){
+        
+                this.caseCourante.vider();
+            
+                this.caseCourante.occupee = false;
+        
+                this.caseCourante = caseApres;
+        
+                this.caseCourante.setContenu(this);
+            
+                this.caseCourante.occupee = true;
+            
+                this.pE = pE - 1;
+            
+                flag = true;
                 
+                System.out.println("Arrivé A La SafeZone !!!!!!!!!!!!!!!!" + this.pE);              
+            }
+        
+            else{
+            
+                flag = true;
+            
+                    if (caseApres.occupee && notInDernieresRencontres((EtreVivant) caseApres.getContenu())){
+                
+                        rencontrer((EtreVivant) caseApres.getContenu());
+                
+                    }
+            
+                }                
+                
+            }            
+            
+            else{
+                
+                flag = true;
+                                
             }
             
         }
@@ -184,24 +230,24 @@ abstract class EtreVivant {
     *
     * @author Toine
     * 
-    * Methode choisissant aléatoirement la prochaine case sur laquelle on va essayer de se rendre
+    * Methode choisissant la prochaine case 
     */
     
     public Case prochaineCase(){
   
         Case prochaineCase = new Case();
         
-        if (pE >= PE_CRITIQUE){
+        if (pE >= PE_CRITIQUE){     //Si on a assez de PE on cherche une case au hasard
         
             Random random = new Random();
         
             ArrayList<Case> voisins = this.carte.voisins(this.caseCourante, derniereDirection);
-              
+            
             prochaineCase = voisins.get(random.nextInt(voisins.size()));
         
         }
         
-        else{
+        else{                       //Si on a pas assez de PE on rejoin la SafeZone
             
             prochaineCase = this.carte.cheminDirection(this.caseCourante, this.directionSafeZone);
             
@@ -211,7 +257,13 @@ abstract class EtreVivant {
         
     }
     
-     
+        /**
+    *
+    * @author Toine
+    * 
+    * Methode vérifiant si un EtreVivant a déjà été rencontré
+    */
+    
     
     public boolean notInDernieresRencontres(EtreVivant pEtreVivant){
         
@@ -231,6 +283,15 @@ abstract class EtreVivant {
         return bool;
         
     }
+    
+    
+        /**
+    *
+    * @author Toine
+    * 
+    * Methode ajout un EtreVivant à la liste des rencontres
+    */
+    
     
     public void addRencontre(EtreVivant autre){
         
