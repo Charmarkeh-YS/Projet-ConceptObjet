@@ -77,6 +77,15 @@ public class ProjetConcept {
         liste.add(oc);
         liste.add(go);
         
+        Obstacle pierre = new Obstacle("Pierre");
+        Obstacle trou = new Obstacle("Trou");
+        
+        ArrayList<Obstacle> listeOb = new ArrayList();
+        
+        listeOb.add(pierre);
+        listeOb.add(trou);        
+        
+        carte.ajoutObstacle(listeOb);
         carte.ajoutEtresVivants(liste);
         
         /*On a créé une carte avec 4 EtreVivant dessus*/
@@ -93,7 +102,7 @@ public class ProjetConcept {
         
         /*4 fois de suite on bouge un EtreVivant puis on affiche la carte*/
         
-        for (int i = 0; i < 10; i++){
+        for (int i = 0; i < 100; i++){
             
             hu.move();
             

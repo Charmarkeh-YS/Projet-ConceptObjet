@@ -45,6 +45,7 @@ public class Case {
         this.x = pX;
         this.y = pY;
         this.vider();
+        this.occupee = false;
         
     }
     
@@ -166,9 +167,17 @@ public class Case {
         
         if (this.occupee){
             
-            EtreVivant temp = (EtreVivant) this.contenu;
+            EtreVivant tempEV = (EtreVivant) this.contenu;
             
-            string = temp.toString();
+            string = tempEV.toString();
+            
+        }
+        
+        if (!this.occupee && !this.isEmpty()){
+            
+            Obstacle tempO = (Obstacle) this.contenu;
+            
+            string = tempO.toString();
             
         }
         

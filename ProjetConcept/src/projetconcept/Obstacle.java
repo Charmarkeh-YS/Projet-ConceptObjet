@@ -11,8 +11,17 @@ package projetconcept;
  */
 public class Obstacle {
     
-    public Obstacle(){       
+    String name;
+    
+    public Obstacle(String pName){       
         
+        this.name = pName;
+    }
+    
+    @Override
+    public String toString(){
+        
+        return "%";
         
     }
     

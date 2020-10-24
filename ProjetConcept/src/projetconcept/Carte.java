@@ -108,6 +108,29 @@ public class Carte {
         
     }
     
+    public void ajoutObstacle(ArrayList<Obstacle> liste){
+        
+        Random random = new Random();
+        
+        int idCase = -1;
+        
+        for (int i = 0; i < liste.size(); i++){
+            
+            idCase = random.nextInt(this.cases.size());
+            
+            if (this.cases.get(idCase).getClass() != SafeCase.class){
+            
+                System.out.println("Obstacle : " + this.cases.get(idCase).getX() + " / " +this.cases.get(idCase).getY());
+                
+                this.cases.get(idCase).setContenu(liste.get(i));
+            
+            }
+            
+        }
+        
+        
+    }
+    
         /**
     *
     * @author Toine
