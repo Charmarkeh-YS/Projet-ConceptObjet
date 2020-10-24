@@ -20,7 +20,7 @@ enum Direction {
     SUDEST("Sud-Est", 1, -1),
     SUDOUEST("Sud-Ouest", -1, -1),
     EST("Est", 1, 0),
-    OUEST("Ouest", -1, -1),
+    OUEST("Ouest", -1, 0),
     FIXE("Fixe", 0, 0);
     
     
@@ -67,10 +67,10 @@ enum Direction {
             case SUDEST : oppose = Direction.NORDOUEST;
             break;
             
-            case NORDOUEST : oppose = Direction.NORDEST;
+            case NORDOUEST : oppose = Direction.SUDEST;
             break;
             
-            case SUDOUEST : oppose = Direction.SUDEST;
+            case SUDOUEST : oppose = Direction.NORDEST;
             break;          
       
         }

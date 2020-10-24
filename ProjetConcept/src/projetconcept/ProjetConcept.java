@@ -96,10 +96,28 @@ public class ProjetConcept {
         for (int i = 0; i < 10; i++){
             
             hu.move();
+            
+            for (int k = 0; k < carte.getsafeCases().size(); k++){
+                
+                carte.getsafeCases().get(k).rechargePe();
+                
+            }
         
             el.move();
+            
+            for (int k = 0; k < carte.getsafeCases().size(); k++){
+                
+                carte.getsafeCases().get(k).rechargePe();
+                
+            }
         
             oc.move();
+            
+            for (int k = 0; k < carte.getsafeCases().size(); k++){
+                
+                carte.getsafeCases().get(k).rechargePe();
+                
+            }
         
             go.move();
         

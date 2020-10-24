@@ -29,6 +29,7 @@ abstract class EtreVivant {
     private Carte carte;                    /*Carte du jeu sur lequel se trouve l'etre vivant*/
     private ArrayList<EtreVivant> dernieresRencontres;
     private Direction directionSafeZone;
+    private int nombreTours;
     
         
     
@@ -48,7 +49,7 @@ abstract class EtreVivant {
         caseCourante = new Case();
         dernieresRencontres = new ArrayList<>();
         directionSafeZone = pDirectionSafeZone;  
-        
+        nombreTours = 0;
     }    
     
     /**
@@ -60,7 +61,11 @@ abstract class EtreVivant {
     
     public void move(){
         
-        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&Debut tour de : " + this + " Reste PE : " + this.pE + " X : " + this.caseCourante.getX() + " Y : " + this.caseCourante.getY() + "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");        
+        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&Debut tour de : " + this + " Reste PE : " + this.pE + " X : " + this.caseCourante.getX() + " Y : " + this.caseCourante.getY() + this.directionSafeZone + "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");        
+        
+        this.nombreTours++;
+        
+        int nombreRencontres = this.dernieresRencontres.size();
         
         this.carte.afficherCarte();
         
@@ -71,8 +76,20 @@ abstract class EtreVivant {
             flag = this.changerCase(this.prochaineCase());
            
         }       
+                
+        if (nombreRencontres < this.dernieresRencontres.size()){
+            
+            for (int i = 0; i < this.dernieresRencontres.size() - nombreRencontres; i++){
+                
+                this.dernieresRencontres.remove(i);
+                i = i - 1;
+                
+            }
+            
+        }
         
         this.carte.afficherCarte();
+        
     }
     
     
@@ -99,11 +116,12 @@ abstract class EtreVivant {
         System.out.println(this + " " + this.savoir.toString());
         System.out.println(autre + " " + autre.getSavoir().toString());
         
-        if (this.alliance == autre.alliance){
+        if (this.alliance == autre.alliance){ 
             
             if(autre.getClass().getName() == this.getClass().getName()){
                 
                 this.savoir.cumulDesSavoirs(autre.getSavoir());
+                
             }
             
             else{
@@ -149,9 +167,9 @@ abstract class EtreVivant {
         boolean flag = false;
         this.derniereDirection = this.caseCourante.directionAPrendre(caseApres);
         
-        System.out.println("Tour de : " + this + " Reste PE : " + this.pE + " X : " + this.caseCourante.getX() + " Y : " + this.caseCourante.getY());
+        //System.out.println("Tour de : " + this + " Reste PE : " + this.pE + " X : " + this.caseCourante.getX() + " Y : " + this.caseCourante.getY());
         
-        System.out.println("Tentative pour atteindre : " + caseApres.getX() + " / " + caseApres.getY());
+        //System.out.println("Tentative pour atteindre : " + caseApres.getX() + " / " + caseApres.getY());
         
         if(!(caseApres.getClass() == SafeCase.class)){
             
@@ -172,14 +190,20 @@ abstract class EtreVivant {
                    
             }
         
-            else{
-            
-                flag = true;
+            else{         
             
                     if (caseApres.occupee && notInDernieresRencontres((EtreVivant) caseApres.getContenu())){
                 
-                        rencontrer((EtreVivant) caseApres.getContenu());
+                        rencontrer((EtreVivant) caseApres.getContenu());                        
+                        flag = true;
+                        //System.out.println("Déjà Rencontré");
                 
+                    }
+                    
+                    if (!caseApres.occupee){
+                        
+                        flag = true;
+                        
                     }
             
                 }
@@ -216,28 +240,33 @@ abstract class EtreVivant {
             }
         
             else{
-            
-                flag = true;
-            
+
                     if (caseApres.occupee && notInDernieresRencontres((EtreVivant) caseApres.getContenu())){
                 
                         rencontrer((EtreVivant) caseApres.getContenu());
-                
+                        flag = true;
+                        //System.out.println("Déjà Rencontré");                
                     }
             
+                    if (!caseApres.occupee){
+                        
+                        flag = true;
+                        
+                    }
+                    
                 }                
                 
             }            
             
             else{
                 
-                System.out.println("Tentavite Intrusion SafeZone Adverse Rejetée");
+                //System.out.println("Tentavite Intrusion SafeZone Adverse Rejetée");
                                 
             }
             
         }
         
-        System.out.println("Nouvelle Case : " + this.caseCourante.getX() + " / " + this.caseCourante.getY());
+        //System.out.println("Nouvelle Case : " + this.caseCourante.getX() + " / " + this.caseCourante.getY());
                 
         return flag;
         
