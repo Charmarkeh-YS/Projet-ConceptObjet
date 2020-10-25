@@ -38,7 +38,7 @@ public class Gobelin extends EtreVivant{
     @Override
     public String toString(){
         
-        return "O";
+        return "€";
         
     }
     
