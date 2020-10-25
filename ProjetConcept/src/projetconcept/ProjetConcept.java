@@ -102,13 +102,14 @@ public class ProjetConcept {
         
         /*4 fois de suite on bouge un EtreVivant puis on affiche la carte*/
         
-        for (int i = 0; i < 100; i++){
+        for (int i = 0; i < 5; i++){
             
             hu.move();
             
             for (int k = 0; k < carte.getsafeCases().size(); k++){
                 
                 carte.getsafeCases().get(k).rechargePe();
+                carte.getsafeCases().get(k).recolteSavoir();
                 
             }
         
@@ -117,6 +118,7 @@ public class ProjetConcept {
             for (int k = 0; k < carte.getsafeCases().size(); k++){
                 
                 carte.getsafeCases().get(k).rechargePe();
+                carte.getsafeCases().get(k).recolteSavoir();
                 
             }
         
@@ -125,6 +127,7 @@ public class ProjetConcept {
             for (int k = 0; k < carte.getsafeCases().size(); k++){
                 
                 carte.getsafeCases().get(k).rechargePe();
+                carte.getsafeCases().get(k).recolteSavoir();
                 
             }
         
@@ -133,6 +136,7 @@ public class ProjetConcept {
             for (int k = 0; k < carte.getsafeCases().size(); k++){
                 
                 carte.getsafeCases().get(k).rechargePe();
+                carte.getsafeCases().get(k).recolteSavoir();
                 
             }
             
@@ -143,6 +147,12 @@ public class ProjetConcept {
         System.out.println("Savoir Elfe : " + el.getSavoir().toString());
         System.out.println("Savoir Orque : " + oc.getSavoir().toString());
         System.out.println("Savoir Gobelin : " + go.getSavoir().toString());
+        
+        for (int k = 0; k < carte.getsafeCases().size(); k++){
+                
+                System.out.println(carte.getsafeCases().get(k).getX() + " / " + carte.getsafeCases().get(k).getY() + " : " + carte.getsafeCases().get(k).getSavoir().toString());
+                
+            }
         
         
     }

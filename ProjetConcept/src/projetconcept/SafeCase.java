@@ -16,11 +16,13 @@ import java.util.ArrayList;
 public class SafeCase extends Case{
     
     private Object espece;
+    private Savoir reservoir;
     
     
     public SafeCase(int pX, int pY){
         
         super(pX, pY);
+        reservoir = new Savoir();
         
     }
     
@@ -43,6 +45,21 @@ public class SafeCase extends Case{
         
     }
     
+    public void recolteSavoir(){
+        
+        if (this.occupee){
+            
+            EtreVivant tempEV = (EtreVivant) this.getContenu();
+            
+            tempEV.getSavoir().donnerSavoir(reservoir);
+            
+            
+        }
+        
+        
+    }
+    
+            
     ////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////Geters et Seters/////////////////////////////
     ////////////////////////////////////////////////////////////////////////////
@@ -53,12 +70,24 @@ public class SafeCase extends Case{
         
     }
     
+    public Savoir getSavoir(){
+        
+        return this.reservoir;
+        
+    }
+    
     
     public void setEspece(Object pEspece){
         
         this.espece = pEspece;
         
     }    
+    
+    public void setReservoir(Savoir pReservoir){
+        
+        this.reservoir = pReservoir;
+        
+    }
     
     ////////////////////////////////////////////////////////////////////////////
     //////////Redefinission des fonctions de base (Equal, toString...)//////////

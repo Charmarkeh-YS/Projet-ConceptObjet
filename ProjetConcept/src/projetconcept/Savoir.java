@@ -73,6 +73,20 @@ public class Savoir {
         
     }
     
+    public void donnerSavoir(Savoir pSavoir){
+        
+        for (int j = 0; j<this.messages.size(); j++){
+            
+            if (pSavoir.notIn(this.messages.get(j))){
+                
+                pSavoir.messages.add(this.messages.get(j));
+                
+            }
+            
+        }
+        
+    }
+    
     
     /**
     *
