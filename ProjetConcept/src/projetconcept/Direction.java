@@ -25,7 +25,7 @@ enum Direction {
     
     
     private final String nom;  
-    private final int difX;
+    private final int difX;     //Coordonnées du vecteur correspondant à la direction
     private final int difY;
 
     Direction(String nom, int pDifX, int pDifY){

@@ -18,7 +18,7 @@ public class Case {
     
     boolean occupee;    /*Boolean indiquant si la case est occupée par un ETRE VIVANT, ainsi si un obstacle est dessous, occupee = false*/
     
-    private Object contenu;     /*contenu de la case*/
+    private Object contenu;     /*contenu de la case, EtreVivant ou obstacle*/
     
     /**
     *
@@ -88,7 +88,7 @@ public class Case {
     *
     * @author Toine
     * 
-    * Méthode La direction dans la laquelle se trouve la case cible (La cible doit etre voisine)
+    * Méthode indiquant la direction dans laquelle se trouve la case cible (La cible doit etre voisine)
     */
     
     public Direction directionAPrendre(Case caseCible){

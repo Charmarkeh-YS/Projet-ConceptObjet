@@ -53,7 +53,7 @@ public class Carte {
         
         ArrayList<Case> listeCases = new ArrayList<>();
         
-        int xSafeZone = pDimenssionsCarte.getLongueurX() / 4;
+        int xSafeZone = pDimenssionsCarte.getLongueurX() / 4;       //Proportion des safe-zones par rapport à la carte
         int ySafeZone = pDimenssionsCarte.getLongueurY() / 4;
         
         for (int i = 0; i < pDimenssionsCarte.getLongueurY(); i++){
@@ -62,6 +62,8 @@ public class Carte {
                 
                 if (!((j < xSafeZone && i < ySafeZone) || (j > pDimenssionsCarte.getLongueurX() - xSafeZone - 1 && i > pDimenssionsCarte.getLongueurY() - ySafeZone - 1) || (j < xSafeZone && i > pDimenssionsCarte.getLongueurY() - ySafeZone - 1) ||(j > pDimenssionsCarte.getLongueurX() - xSafeZone - 1 && i < ySafeZone))){
                     
+                    //On place des objets Case partout sur la carte sauf dans les coins
+                    
                     Case tempCase = new Case(j, i);
                 
                     listeCases.add(tempCase);
@@ -69,6 +71,9 @@ public class Carte {
                 }
                 
                 else{                    
+                    
+                    //On place les SafeCase dans les coins
+                    
                     SafeCase tempSafeCase = new SafeCase(j,i);     
                     
                     if (j < xSafeZone && i < ySafeZone){
@@ -96,6 +101,9 @@ public class Carte {
                     }                    
                     
                     listeCases.add(tempSafeCase);
+                    
+                    //Pour retrouver facilement les SafeCase on les place dans une liste à part
+                    
                     safeCases.add(tempSafeCase);
                     
                 }             
@@ -107,6 +115,15 @@ public class Carte {
         return listeCases;      
         
     }
+    
+    /**
+    *
+    * @author Toine
+    * 
+    * Cette Méthode place les maitres sur la carte.
+    * Ils sont placés dans les coins de leurs safe-zones respectives
+    * 
+    */
     
     public void ajoutMaitres(MaitreHumain maitreHumain, MaitreElfe maitreElfe, MaitreGobelin maitreGobelin, MaitreOrque maitreOrque){
         
@@ -140,6 +157,15 @@ public class Carte {
         
     }
     
+    /**
+    *
+    * @author Toine
+    * 
+    * Cette Méthode ajoute des obstacle aléatoirement sur la carte.
+    * Sauf dans les safe-zones.
+    * 
+    */
+    
     public void ajoutObstacle(ArrayList<Obstacle> liste){
         
         Random random = new Random();
@@ -167,7 +193,8 @@ public class Carte {
     *
     * @author Toine
     * 
-    * Ajoute des EtreVivant sur la carte aléatoirement
+    * Ajoute des EtreVivant sur la carte aléatoirement.
+    * Sauf dans les safe-zones.
     */
     
         
@@ -248,7 +275,7 @@ public class Carte {
     *
     * @author Toine
     * 
-    * Méthode renvoyant la case à choisir prendre rejoindre une direction
+    * Méthode renvoyant la case à choisir quand on souhaite se diriger vers une direction
     */
     
     public Case cheminDirection(Case position, Direction direction){
@@ -259,12 +286,16 @@ public class Carte {
         
         Random random = new Random();
         
+        //on liste nos "voeux" de direction, en effet on considere que si on souhaite aller vers le nord
+        //on acceptera d'aller au Nord, au NordEst ou bien vers le NordOuest
+        
+        directions.add(direction);
         directions.add(direction.voisins()[0]);
         directions.add(direction.voisins()[1]);
-        directions.add(direction);
-                
+                        
         for (int i = 0; i < directions.size(); i++){
             
+            //On élimine les voeux qui nous sortent de la carte
             
             if(!(position.getX() + directions.get(i).getDifX() > 0 && position.getY() + directions.get(i).getDifY() > 0 && position.getX() + directions.get(i).getDifX() < this.dimensions.getLongueurX() - 1 && position.getY() + directions.get(i).getDifY() < this.dimensions.getLongueurY())){
             
@@ -275,13 +306,18 @@ public class Carte {
             
         }
         
+                
         if (!directions.isEmpty()){
+            
+            //On choisi le premier voeux qui est possible
             
             chemin = directions.get(random.nextInt(directions.size()));
             
         }
                 
         else{
+            
+            //Si aucun voeux n'est possible alors on recule
             
             if(position.getX() + direction.oppose().getDifX() > 0 && position.getY() + direction.oppose().getDifY() > 0 && position.getX() + direction.oppose().getDifX() < this.dimensions.getLongueurX() - 1 && position.getY() + direction.oppose().getDifY() < this.dimensions.getLongueurY()){
             
@@ -291,6 +327,7 @@ public class Carte {
             
         }           
   
+        //Si on ne peut pas reculer alors on ne bouge pas (La variable chemin est initialisée à "Fixe")
                 
         return chercherCase(position.getX() + chemin.getDifX(), position.getY() + chemin.getDifY());
         
@@ -327,7 +364,9 @@ public class Carte {
     *
     * @author Toine
     * 
-    * Retourne les cases voisines d'une case passée en parametre
+    * Retourne les cases voisines d'une case passée en parametre.
+    * Sauf la case étant dans la direction prohibee.
+    * Si on ne veut prohiber aucune direction on indique la direction "Fixe" 
     */
     
     

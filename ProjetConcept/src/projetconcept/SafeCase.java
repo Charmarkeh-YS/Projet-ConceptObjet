@@ -45,6 +45,13 @@ public class SafeCase extends Case{
         
     }
     
+    /**
+    *
+    * @author Toine
+    * 
+    * Méthode permetant de recolter le savoir des "non-maitre"
+    */
+    
     public void recolteSavoir(){
         
         if (this.occupee){

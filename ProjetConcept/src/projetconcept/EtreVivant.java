@@ -27,9 +27,8 @@ abstract class EtreVivant {
     private Alliance alliance;              /*Alliance à laquelle apartient l'etre vivant*/
     private Case caseCourante;              /*Case actuelle occupé par l'etre vivant*/
     private Carte carte;                    /*Carte du jeu sur lequel se trouve l'etre vivant*/
-    private ArrayList<EtreVivant> dernieresRencontres;
-    private Direction directionSafeZone;
-    private int nombreTours;
+    private ArrayList<EtreVivant> dernieresRencontres;      //Derniers EtreVivants croisés, mis à jour à la fin de chaque tours
+    private Direction directionSafeZone;        //Direction à suivre pour rejoindre la safe-zone
     
         
     
@@ -49,7 +48,7 @@ abstract class EtreVivant {
         caseCourante = new Case();
         dernieresRencontres = new ArrayList<>();
         directionSafeZone = pDirectionSafeZone;  
-        nombreTours = 0;
+        
     }    
     
     /**
@@ -63,28 +62,25 @@ abstract class EtreVivant {
         
         System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&Debut tour de : " + this + " Reste PE : " + this.pE + " X : " + this.caseCourante.getX() + " Y : " + this.caseCourante.getY() + this.directionSafeZone + "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");        
         
-        this.nombreTours++;
         
-        int nombreRencontres = this.dernieresRencontres.size();
+        int nombreRencontres = this.dernieresRencontres.size();     //Variable qui servira à mettre à jour la liste des dernieres rencontres
         
-        this.carte.afficherCarte();
+        this.carte.afficherCarte();     //on affiche la carte de début de tour
         
-        boolean flag = false;
+        boolean flag = false;       //quand ce flag est true on arrete le tour, on ne change plus de case
         
-        Case tempCase = this.caseCourante;
+        Case tempCase = this.caseCourante;      //Ces deux variables        
+        int tourneEnRond = 0;                   //Servent à savoir si on stagne, si c'est le cas on arretera le tour en ce disant que la situation aura évoluée au tour suivant
         
-        int tourneEnRond = 0;
-        
-        while(!flag){                      
+        while(!flag){                                  
             
-            
-            flag = this.changerCase(this.prochaineCase());
+            flag = this.changerCase(this.prochaineCase());      //Action principale de cette méthode, on change de case
             
             if (tempCase == caseCourante){
                 
                 tourneEnRond++;
                 
-                if (tourneEnRond > 10){
+                if (tourneEnRond > 10){     //Si on stagne pendant 10 essais on s'arrete là
                     
                     flag = true;
                     
@@ -102,6 +98,8 @@ abstract class EtreVivant {
                 
         if (nombreRencontres < this.dernieresRencontres.size()){
             
+            //Les rencontres effectuées au tour précédent son éffacées
+            
             for (int i = 0; i < this.dernieresRencontres.size() - nombreRencontres; i++){
                 
                 this.dernieresRencontres.remove(i);
@@ -110,6 +108,8 @@ abstract class EtreVivant {
             }
             
         }
+        
+        //on afiche la carte en fin de tour
         
         this.carte.afficherCarte();
         
@@ -162,6 +162,8 @@ abstract class EtreVivant {
         }
         
         autre.addRencontre(this);
+        
+        //On ajoute la rencontre à la liste des dernieres rencontres
         this.dernieresRencontres.add(autre);
         
         System.out.println("Savoirs aprés rencontre :");

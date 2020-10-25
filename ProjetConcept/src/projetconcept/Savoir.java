@@ -73,6 +73,13 @@ public class Savoir {
         
     }
     
+    /**
+    *
+    * @author Toine
+    * 
+    * Methode permettant de donner ton son savoir (En le conservant)
+    */
+    
     public void donnerSavoir(Savoir pSavoir){
         
         for (int j = 0; j<this.messages.size(); j++){

@@ -24,7 +24,7 @@ public class Gobelin extends EtreVivant{
     public Gobelin(Carte pCarte){
         
         super(pCarte, Direction.SUDOUEST);      //La SafeZone des Gobelins est localisée au Sud Ouest
-        super.setAlliance(Alliance.BTEAM);
+        super.setAlliance(Alliance.BTEAM);      //L'alliance BTEAM 
         
     }
     
