@@ -9,13 +9,27 @@ package projetconcept;
  *
  * @author Toine
  * 
- * Un MaitreOrque est un Orque
+ * Un MaitreOrque est un Orque (Singleton)
  */
 public class MaitreOrque extends Orque{
     
-    public MaitreOrque(Carte pCarte){
+    private static MaitreOrque maitreOrque;
+    
+    private MaitreOrque(Carte pCarte){
         
         super(pCarte);
+        
+    }
+    
+    public static MaitreOrque getInstance(Carte pCarte){
+        
+        if (maitreOrque == null){
+            
+            maitreOrque = new MaitreOrque(pCarte);
+            
+        }
+        
+        return maitreOrque;
         
     }
     

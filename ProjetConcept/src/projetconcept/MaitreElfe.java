@@ -9,13 +9,27 @@ package projetconcept;
  *
  * @author Toine
  * 
- * Un MaitreElfe est un Elfe
+ * Un MaitreElfe est un Elfe (Singleton)
  */
 public class MaitreElfe extends Elfe{
     
-    public MaitreElfe(Carte pCarte){
+    private static MaitreElfe maitreElfe;
+    
+    private MaitreElfe(Carte pCarte){
         
         super(pCarte);
+        
+    }
+    
+    public static MaitreElfe getInstance(Carte pCarte){
+        
+        if (maitreElfe == null){        
+            
+            maitreElfe = new MaitreElfe(pCarte);
+            
+        }                
+        
+        return maitreElfe;
         
     }
     

@@ -71,9 +71,32 @@ abstract class EtreVivant {
         
         boolean flag = false;
         
-        while(!flag){               
+        Case tempCase = this.caseCourante;
+        
+        int tourneEnRond = 0;
+        
+        while(!flag){                      
+            
             
             flag = this.changerCase(this.prochaineCase());
+            
+            if (tempCase == caseCourante){
+                
+                tourneEnRond++;
+                
+                if (tourneEnRond > 10){
+                    
+                    flag = true;
+                    
+                }
+                
+            }
+            
+            else{
+                
+                tempCase = caseCourante;
+                
+            }
            
         }       
                 

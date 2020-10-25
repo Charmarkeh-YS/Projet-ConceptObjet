@@ -9,13 +9,27 @@ package projetconcept;
  *
  * @author Toine
  * 
- * Un MaitreGobelin est un Gobelin
+ * Un MaitreGobelin est un Gobelin (Singleton)
  */
 public class MaitreGobelin extends Gobelin{
     
-    public MaitreGobelin(Carte pCarte){
+    private static MaitreGobelin maitreGobelin;
+    
+    private MaitreGobelin(Carte pCarte){
         
         super(pCarte);
+        
+    }
+    
+    public static MaitreGobelin getInstance(Carte pCarte){
+        
+        if (maitreGobelin == null){
+            
+            maitreGobelin = new MaitreGobelin(pCarte);
+            
+        }
+        
+        return maitreGobelin;
         
     }
     

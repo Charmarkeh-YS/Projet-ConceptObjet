@@ -9,13 +9,27 @@ package projetconcept;
  *
  * @author Toine
  * 
- * Un MaitreHumain est un Humain
+ * Un MaitreHumain est un Humain (Singleton)
  */
 public class MaitreHumain extends Humain{
     
-    public MaitreHumain(Carte pCarte){
+    private static MaitreHumain maitreHumain;
+    
+    private MaitreHumain(Carte pCarte){
         
         super(pCarte);
+        
+    }
+    
+    public static MaitreHumain getInstance(Carte pCarte){
+        
+        if (maitreHumain == null){
+            
+            maitreHumain = new MaitreHumain(pCarte);
+            
+        }
+        
+        return maitreHumain;
         
     }
     
