@@ -29,6 +29,11 @@ public class ProjetConcept {
         Elfe el = new Elfe(carte);
         Orque oc = new Orque(carte);
         Gobelin go = new Gobelin(carte);
+        
+        MaitreElfe maitreElfe = MaitreElfe.getInstance(carte);
+        MaitreHumain maitreHumain = MaitreHumain.getInstance(carte);
+        MaitreOrque maitreOrque = MaitreOrque.getInstance(carte);
+        MaitreGobelin maitreGobelin = MaitreGobelin.getInstance(carte);
                        
         Message m1 = new Message("My my, hey hey",1);
         Message m2 = new Message("Rock and roll is here to stay",2);
@@ -85,6 +90,7 @@ public class ProjetConcept {
         listeOb.add(pierre);
         listeOb.add(trou);        
         
+        carte.ajoutMaitres(maitreHumain, maitreElfe, maitreGobelin, maitreOrque);
         carte.ajoutObstacle(listeOb);
         carte.ajoutEtresVivants(liste);
         
@@ -140,6 +146,41 @@ public class ProjetConcept {
                 
             }
             
+            maitreElfe.move();
+        
+            for (int k = 0; k < carte.getsafeCases().size(); k++){
+                
+                carte.getsafeCases().get(k).rechargePe();
+                carte.getsafeCases().get(k).recolteSavoir();
+                
+            }
+            
+            maitreHumain.move();
+        
+            for (int k = 0; k < carte.getsafeCases().size(); k++){
+                
+                carte.getsafeCases().get(k).rechargePe();
+                carte.getsafeCases().get(k).recolteSavoir();
+                
+            }
+            
+            maitreOrque.move();
+        
+            for (int k = 0; k < carte.getsafeCases().size(); k++){
+                
+                carte.getsafeCases().get(k).rechargePe();
+                carte.getsafeCases().get(k).recolteSavoir();
+                
+            }
+            
+            maitreGobelin.move();
+        
+            for (int k = 0; k < carte.getsafeCases().size(); k++){
+                
+                carte.getsafeCases().get(k).rechargePe();
+                carte.getsafeCases().get(k).recolteSavoir();
+                
+            }
         }
         
         
@@ -147,6 +188,11 @@ public class ProjetConcept {
         System.out.println("Savoir Elfe : " + el.getSavoir().toString());
         System.out.println("Savoir Orque : " + oc.getSavoir().toString());
         System.out.println("Savoir Gobelin : " + go.getSavoir().toString());
+        System.out.println("Savoir MaitreElfe : " + maitreElfe.getSavoir().toString());
+        System.out.println("Savoir MaitreHumain : " + maitreHumain.getSavoir().toString());
+        System.out.println("Savoir MaitreOrque : " + maitreOrque.getSavoir().toString());
+        System.out.println("Savoir MaitreGobelin : " + maitreGobelin.getSavoir().toString());
+        
         
         for (int k = 0; k < carte.getsafeCases().size(); k++){
                 

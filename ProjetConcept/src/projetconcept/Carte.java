@@ -108,6 +108,38 @@ public class Carte {
         
     }
     
+    public void ajoutMaitres(MaitreHumain maitreHumain, MaitreElfe maitreElfe, MaitreGobelin maitreGobelin, MaitreOrque maitreOrque){
+        
+        for (int i = 0; i < this.cases.size(); i++){
+            
+            if (this.cases.get(i).getX() == 0 && this.cases.get(i).getY() == 0){
+                
+                maitreOrque.changerCase(this.cases.get(i));
+                
+            }
+            
+            if (this.cases.get(i).getX() == this.dimensions.getLongueurX() - 1 && this.cases.get(i).getY() == this.dimensions.getLongueurY() - 1){
+                
+                maitreHumain.changerCase(this.cases.get(i));
+                
+            }
+            
+            if (this.cases.get(i).getX() == 0 && this.cases.get(i).getY() == this.dimensions.getLongueurY() - 1){
+                
+                maitreGobelin.changerCase(this.cases.get(i));
+                
+            }
+            
+            
+            if (this.cases.get(i).getX() == this.dimensions.getLongueurY() - 1 && this.cases.get(i).getY() == 0){
+                
+                maitreElfe.changerCase(this.cases.get(i));
+                
+            }
+        }
+        
+    }
+    
     public void ajoutObstacle(ArrayList<Obstacle> liste){
         
         Random random = new Random();
@@ -317,6 +349,7 @@ public class Carte {
         return voisinsListe;
         
     } 
+    
     
     ////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////Geters et Seters/////////////////////////////
