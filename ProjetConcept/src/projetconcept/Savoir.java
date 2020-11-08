@@ -146,7 +146,7 @@ public class Savoir {
             
             for (int i = 0; i<pSavoir.messages.size(); i++){
             
-                if (notIn(pSavoir.messages.get(i)) && AJE.pileOuFace()){
+                if (notIn(pSavoir.messages.get(i))){
                 
                     this.messages.add(pSavoir.messages.get(i));
                     pSavoir.perdreMessage(pSavoir.messages.get(i).getID());
@@ -161,7 +161,7 @@ public class Savoir {
             
             for (int j = 0; j<this.messages.size(); j++){
             
-            if (pSavoir.notIn(this.messages.get(j)) && AJE.pileOuFace()){
+            if (pSavoir.notIn(this.messages.get(j))){
                 
                 pSavoir.messages.add(this.messages.get(j));
                 this.perdreMessage(this.messages.get(j).getID());

@@ -19,7 +19,7 @@ public class MaitreHumain extends Humain{
     private static MaitreHumain maitreHumain;
     
     private MaitreHumain(Carte pCarte){
-        
+         
         super(pCarte);
         
     }
@@ -39,7 +39,7 @@ public class MaitreHumain extends Humain{
     @Override
     public void move(){
         
-        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&Debut tour de : " + this + " Reste PE : " + this.getPE() + " X : " + this.getCaseCourante().getX() + " Y : " + this.getCaseCourante().getY() + "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");        
+        System.out.println("-------------------------------------------------Debut tour de : " + this + " Reste PE : " + this.getPE() + " X : " + this.getCaseCourante().getX() + " Y : " + this.getCaseCourante().getY() + this.getDerniereDirection() + "--------------------------------------------------------------");        
         
         this.getCarte().afficherCarte();
         
@@ -61,6 +61,7 @@ public class MaitreHumain extends Humain{
         
         this.getCarte().afficherCarte();       
         
+        System.out.println("----------------------------------------------------------------------------Fin Tour----------------------------------------------------------------------------\n");        
         
     }
     

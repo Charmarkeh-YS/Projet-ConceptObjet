@@ -39,7 +39,7 @@ public class SafeCase extends Case{
             
             EtreVivant contenu = (EtreVivant) super.getContenu();
             
-            contenu.setPE(contenu.getPE() + 100);
+            contenu.setPE(contenu.getPE() + 5);
             
         }
         

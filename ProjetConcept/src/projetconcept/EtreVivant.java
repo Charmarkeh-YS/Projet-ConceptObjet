@@ -60,7 +60,7 @@ abstract class EtreVivant {
     
     public void move(){
         
-        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&Debut tour de : " + this + " Reste PE : " + this.pE + " X : " + this.caseCourante.getX() + " Y : " + this.caseCourante.getY() + this.directionSafeZone + "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");        
+        System.out.println("-------------------------------------------------Debut tour de : " + this + " Reste PE : " + this.pE + " X : " + this.caseCourante.getX() + " Y : " + this.caseCourante.getY() + " Safe-Zone : " + this.directionSafeZone + "--------------------------------------------------------------");        
         
         
         int nombreRencontres = this.dernieresRencontres.size();     //Variable qui servira à mettre à jour la liste des dernieres rencontres
@@ -111,7 +111,11 @@ abstract class EtreVivant {
         
         //on afiche la carte en fin de tour
         
+        
+        
         this.carte.afficherCarte();
+        
+        System.out.println("----------------------------------------------------------------------------Fin Tour----------------------------------------------------------------------------\n");
         
     }
     
@@ -132,12 +136,10 @@ abstract class EtreVivant {
     
     public void rencontrer(EtreVivant autre){
         
-        this.carte.afficherCarte();
-        
-        System.out.println("Rencontre avec : " + autre);
-        System.out.println("Savoir avant Rencontre : ");
+        System.out.println("\nRencontre avec : " + autre);
+        System.out.println("\nSavoir avant Rencontre : ");
         System.out.println(this + " " + this.savoir.toString());
-        System.out.println(autre + " " + autre.getSavoir().toString());
+        System.out.println(autre + " " + autre.getSavoir().toString() + "\n");
         
         if (this.alliance == autre.alliance){ 
             
@@ -166,9 +168,9 @@ abstract class EtreVivant {
         //On ajoute la rencontre à la liste des dernieres rencontres
         this.dernieresRencontres.add(autre);
         
-        System.out.println("Savoirs aprés rencontre :");
+        System.out.println("\nSavoirs aprés rencontre :");
         System.out.println(this + " " + this.savoir.toString());
-        System.out.println(autre + " " + autre.getSavoir().toString());
+        System.out.println(autre + " " + autre.getSavoir().toString() + "\n");
         
     }
     

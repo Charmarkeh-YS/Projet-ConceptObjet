@@ -39,7 +39,7 @@ public class MaitreElfe extends Elfe{
     @Override
     public void move(){
         
-        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&Debut tour de : " + this + " Reste PE : " + this.getPE() + " X : " + this.getCaseCourante().getX() + " Y : " + this.getCaseCourante().getY() + "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");        
+        System.out.println("-------------------------------------------------Debut tour de : " + this + " Reste PE : " + this.getPE() + " X : " + this.getCaseCourante().getX() + " Y : " + this.getCaseCourante().getY() + this.getDerniereDirection() + "--------------------------------------------------------------");        
         
         this.getCarte().afficherCarte();
         
@@ -61,6 +61,7 @@ public class MaitreElfe extends Elfe{
         
         this.getCarte().afficherCarte();       
         
+        System.out.println("----------------------------------------------------------------------------Fin Tour----------------------------------------------------------------------------\n");
         
     }
     

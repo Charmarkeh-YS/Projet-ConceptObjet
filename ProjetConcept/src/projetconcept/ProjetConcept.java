@@ -6,6 +6,8 @@
 package projetconcept;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -19,7 +21,10 @@ public class ProjetConcept {
      * Pour l'instant TESTS
      * 
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        
+        final int PAS_DE_TEMPS = 1;
+        //final int NOMBRE_ETRE_PAR_EQUIPE = 2;       
         
         /////Création Carte/////
         
@@ -76,8 +81,10 @@ public class ProjetConcept {
         Message m8 = new Message("but you pay for that",8);
         Message m9 = new Message("And once you're gone,",9);
         Message m10 = new Message("you can never come back",10);
-        Message m11 = new Message("When you're out of the bluev",11);
+        Message m11 = new Message("When you're out of the blue",11);
         Message m12 = new Message("and into the black.",12);
+        
+        int nombreMessages = 12;
         
         /////Distribution des méssages de base aux EtreVivant/////
         
@@ -126,33 +133,34 @@ public class ProjetConcept {
         carte.ajoutObstacle(listeOb);
         carte.ajoutEtresVivants(liste);
         
+        ArrayList<EtreVivant> listeEtresVivants = new ArrayList();
+        
+        for (int i = 0; i < liste.size(); i++){
+            
+            listeEtresVivants.add(liste.get(i));
+            
+        }
+        
+        listeEtresVivants.add(maitreHumain);
+        listeEtresVivants.add(maitreElfe);
+        listeEtresVivants.add(maitreGobelin);
+        listeEtresVivants.add(maitreOrque);
+        
+        Collections.shuffle(listeEtresVivants);
+        
         /////Affichage de la situation de départ (Possession des Message + Carte)/////
         
-        System.out.println("Savoir Humain : " + hu.getSavoir().toString());
-        System.out.println("Savoir Elfe : " + el.getSavoir().toString());
-        System.out.println("Savoir Orque : " + oc.getSavoir().toString());
-        System.out.println("Savoir Gobelin : " + go.getSavoir().toString());
-        System.out.println("Savoir Humain2 : " + hu2.getSavoir().toString());
-        System.out.println("Savoir Elfe2 : " + el2.getSavoir().toString());
-        System.out.println("Savoir Orque2 : " + oc2.getSavoir().toString());
-        System.out.println("Savoir Gobelin2 : " + go2.getSavoir().toString());
-         
+                 
         carte.afficherCarte();
         
         /////Simulation/////
         
-        while (maitreElfe.getSavoir().getMessages().size() < 12 && maitreHumain.getSavoir().getMessages().size() < 12 && maitreOrque.getSavoir().getMessages().size() < 12 && maitreGobelin.getSavoir().getMessages().size() < 12){
-            
-            hu.move();
-            
-            for (int k = 0; k < carte.getsafeCases().size(); k++){
-                
-                carte.getsafeCases().get(k).rechargePe();
-                carte.getsafeCases().get(k).recolteSavoir();
-                
-            }
+        int indiceListe = 0;
+        int nombreTours = 0;
         
-            el.move();
+        while (maitreElfe.getSavoir().getMessages().size() < nombreMessages && maitreHumain.getSavoir().getMessages().size() < nombreMessages && maitreOrque.getSavoir().getMessages().size() < nombreMessages && maitreGobelin.getSavoir().getMessages().size() < nombreMessages){
+                                                          
+            listeEtresVivants.get(indiceListe).move();                        
             
             for (int k = 0; k < carte.getsafeCases().size(); k++){
                 
@@ -160,148 +168,61 @@ public class ProjetConcept {
                 carte.getsafeCases().get(k).recolteSavoir();
                 
             }
-        
-            oc.move();
             
-            for (int k = 0; k < carte.getsafeCases().size(); k++){
-                
-                carte.getsafeCases().get(k).rechargePe();
-                carte.getsafeCases().get(k).recolteSavoir();
-                
-            }
+            Thread.sleep(PAS_DE_TEMPS);
         
-            go.move();
-        
-            for (int k = 0; k < carte.getsafeCases().size(); k++){
+            if (indiceListe == listeEtresVivants.size() - 1){
                 
-                carte.getsafeCases().get(k).rechargePe();
-                carte.getsafeCases().get(k).recolteSavoir();
+                indiceListe = 0;
                 
+                Collections.shuffle(listeEtresVivants);
+                
+                nombreTours++;
             }
             
-            hu2.move();
-            
-            for (int k = 0; k < carte.getsafeCases().size(); k++){
+            else{
                 
-                carte.getsafeCases().get(k).rechargePe();
-                carte.getsafeCases().get(k).recolteSavoir();
-                
-            }
-        
-            el2.move();
-            
-            for (int k = 0; k < carte.getsafeCases().size(); k++){
-                
-                carte.getsafeCases().get(k).rechargePe();
-                carte.getsafeCases().get(k).recolteSavoir();
-                
-            }
-        
-            oc2.move();
-            
-            for (int k = 0; k < carte.getsafeCases().size(); k++){
-                
-                carte.getsafeCases().get(k).rechargePe();
-                carte.getsafeCases().get(k).recolteSavoir();
-                
-            }
-        
-            go2.move();
-        
-            for (int k = 0; k < carte.getsafeCases().size(); k++){
-                
-                carte.getsafeCases().get(k).rechargePe();
-                carte.getsafeCases().get(k).recolteSavoir();
+                indiceListe++;
                 
             }
             
-            maitreElfe.move();
-        
-            for (int k = 0; k < carte.getsafeCases().size(); k++){
-                
-                carte.getsafeCases().get(k).rechargePe();
-                carte.getsafeCases().get(k).recolteSavoir();
-                
-            }
             
-            maitreHumain.move();
-        
-            for (int k = 0; k < carte.getsafeCases().size(); k++){
-                
-                carte.getsafeCases().get(k).rechargePe();
-                carte.getsafeCases().get(k).recolteSavoir();
-                
-            }
-            
-            maitreOrque.move();
-        
-            for (int k = 0; k < carte.getsafeCases().size(); k++){
-                
-                carte.getsafeCases().get(k).rechargePe();
-                carte.getsafeCases().get(k).recolteSavoir();
-                
-            }
-            
-            maitreGobelin.move();
-        
-            for (int k = 0; k < carte.getsafeCases().size(); k++){
-                
-                carte.getsafeCases().get(k).rechargePe();
-                carte.getsafeCases().get(k).recolteSavoir();
-                
-            }
+           
         }
         
         /////Affichage final de la possession des Message/////
         
-        System.out.println("Savoir Humain : " + hu.getSavoir().toString());
-        System.out.println("Savoir Elfe : " + el.getSavoir().toString());
-        System.out.println("Savoir Orque : " + oc.getSavoir().toString());
-        System.out.println("Savoir Gobelin : " + go.getSavoir().toString());
-        System.out.println("Savoir Humain2 : " + hu2.getSavoir().toString());
-        System.out.println("Savoir Elfe2 : " + el2.getSavoir().toString());
-        System.out.println("Savoir Orque2 : " + oc2.getSavoir().toString());
-        System.out.println("Savoir Gobelin2 : " + go2.getSavoir().toString());
-        System.out.println("Savoir MaitreElfe : " + maitreElfe.getSavoir().toString());
-        System.out.println("Savoir MaitreHumain : " + maitreHumain.getSavoir().toString());
-        System.out.println("Savoir MaitreOrque : " + maitreOrque.getSavoir().toString());
-        System.out.println("Savoir MaitreGobelin : " + maitreGobelin.getSavoir().toString());
         
-        
-        
-        /////Utile pour débug
-        //for (int k = 0; k < carte.getsafeCases().size(); k++){                
-        //        System.out.println(carte.getsafeCases().get(k).getX() + " / " + carte.getsafeCases().get(k).getY() + " : " + carte.getsafeCases().get(k).getSavoir().toString());                
-        //    }
-        
-        
+       
         /////Affichage des vainqueurs/////
         
-        if (maitreElfe.getSavoir().getMessages().size() == 12){
+        if (maitreElfe.getSavoir().getMessages().size() == nombreMessages){
             
             System.out.println("Les Elfes ont gagné");
             
         }
         
-        if (maitreHumain.getSavoir().getMessages().size() == 12){
+        if (maitreHumain.getSavoir().getMessages().size() == nombreMessages){
             
             System.out.println("Les Humains ont gagné");
             
         }
         
-        if (maitreOrque.getSavoir().getMessages().size() == 12){
+        if (maitreOrque.getSavoir().getMessages().size() == nombreMessages){
             
             System.out.println("Les Orques ont gagné");
             
         }
         
-        if (maitreGobelin.getSavoir().getMessages().size() == 12){
+        if (maitreGobelin.getSavoir().getMessages().size() == nombreMessages){
             
             System.out.println("Les Gobelins ont gagné");
             
         }
         
+        System.out.println("Nombre de tours: " + nombreTours);
         
     }
+    
     
 }

@@ -31,8 +31,8 @@ enum Direction {
     Direction(String nom, int pDifX, int pDifY){
         
         this.nom = nom;
-        this.difX = pDifY;
-        this.difY = pDifX;
+        this.difX = pDifX;
+        this.difY = pDifY;
         
     }
     

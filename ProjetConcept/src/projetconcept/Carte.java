@@ -90,13 +90,13 @@ public class Carte {
                     
                     if (j < xSafeZone && i > pDimenssionsCarte.getLongueurY() - ySafeZone - 1){
                         
-                        tempSafeCase.setEspece(Elfe.class);
+                        tempSafeCase.setEspece(Orque.class);
                         
                     }
                     
                     if (j > pDimenssionsCarte.getLongueurX() - xSafeZone - 1 && i < ySafeZone){
                         
-                        tempSafeCase.setEspece(Orque.class);
+                        tempSafeCase.setEspece(Elfe.class);
                         
                     }                    
                     
@@ -131,7 +131,7 @@ public class Carte {
             
             if (this.cases.get(i).getX() == 0 && this.cases.get(i).getY() == 0){
                 
-                maitreOrque.changerCase(this.cases.get(i));
+                maitreGobelin.changerCase(this.cases.get(i));
                 
             }
             
@@ -143,12 +143,12 @@ public class Carte {
             
             if (this.cases.get(i).getX() == 0 && this.cases.get(i).getY() == this.dimensions.getLongueurY() - 1){
                 
-                maitreGobelin.changerCase(this.cases.get(i));
+                maitreOrque.changerCase(this.cases.get(i));
                 
             }
             
             
-            if (this.cases.get(i).getX() == this.dimensions.getLongueurY() - 1 && this.cases.get(i).getY() == 0){
+            if (this.cases.get(i).getX() == this.dimensions.getLongueurX() - 1 && this.cases.get(i).getY() == 0){
                 
                 maitreElfe.changerCase(this.cases.get(i));
                 
@@ -246,6 +246,8 @@ public class Carte {
         
         int k = this.dimensions.getLongueurX();
         
+        ArrayList<String> bufferLigne = new ArrayList();
+        
         for (int i = 0; i < this.dimensions.getLongueurY(); i++){
             
             ligne = "";
@@ -256,10 +258,15 @@ public class Carte {
                 
             }
             
-            System.out.println(ligne);
+            bufferLigne.add(ligne);
             
         }
         
+        for (int l = bufferLigne.size() - 1; l > -1 ; l--){
+            
+            System.out.println(bufferLigne.get(l));
+            
+        }
         
         System.out.println("\nLégende : Humain = @ ; Elfe =  + ; Gobelin = € ; Orque = #");
         

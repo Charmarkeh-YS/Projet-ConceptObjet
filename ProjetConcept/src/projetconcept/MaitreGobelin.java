@@ -39,7 +39,7 @@ public class MaitreGobelin extends Gobelin{
     @Override
     public void move(){
         
-        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&Debut tour de : " + this + " Reste PE : " + this.getPE() + " X : " + this.getCaseCourante().getX() + " Y : " + this.getCaseCourante().getY() + "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");        
+        System.out.println("-------------------------------------------------Debut tour de : " + this + " Reste PE : " + this.getPE() + " X : " + this.getCaseCourante().getX() + " Y : " + this.getCaseCourante().getY() + this.getDerniereDirection() + "--------------------------------------------------------------");        
         
         this.getCarte().afficherCarte();
         
@@ -59,8 +59,9 @@ public class MaitreGobelin extends Gobelin{
                 
         
         
-        this.getCarte().afficherCarte();       
+        this.getCarte().afficherCarte();               
         
+        System.out.println("----------------------------------------------------------------------------Fin Tour----------------------------------------------------------------------------\n");        
         
     }
     

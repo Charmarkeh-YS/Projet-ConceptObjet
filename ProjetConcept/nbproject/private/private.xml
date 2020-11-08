@@ -3,19 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Toine/Desktop/Concept%20Objet/GitRepo/Projet-ConceptObjet/ProjetConcept/src/projetconcept/Humain.java</file>
             <file>file:/C:/Users/Toine/Desktop/Concept%20Objet/GitRepo/Projet-ConceptObjet/ProjetConcept/src/projetconcept/ProjetConcept.java</file>
             <file>file:/C:/Users/Toine/Desktop/Concept%20Objet/GitRepo/Projet-ConceptObjet/ProjetConcept/src/projetconcept/Carte.java</file>
-            <file>file:/C:/Users/Toine/Desktop/Concept%20Objet/GitRepo/Projet-ConceptObjet/ProjetConcept/src/projetconcept/MaitreHumain.java</file>
-            <file>file:/C:/Users/Toine/Desktop/Concept%20Objet/GitRepo/Projet-ConceptObjet/ProjetConcept/src/projetconcept/Elfe.java</file>
-            <file>file:/C:/Users/Toine/Desktop/Concept%20Objet/GitRepo/Projet-ConceptObjet/ProjetConcept/src/projetconcept/Orque.java</file>
-            <file>file:/C:/Users/Toine/Desktop/Concept%20Objet/GitRepo/Projet-ConceptObjet/ProjetConcept/src/projetconcept/SafeCase.java</file>
-            <file>file:/C:/Users/Toine/Desktop/Concept%20Objet/GitRepo/Projet-ConceptObjet/ProjetConcept/src/projetconcept/Gobelin.java</file>
-            <file>file:/C:/Users/Toine/Desktop/Concept%20Objet/GitRepo/Projet-ConceptObjet/ProjetConcept/src/projetconcept/MaitreOrque.java</file>
+            <file>file:/C:/Users/Toine/Desktop/Concept%20Objet/GitRepo/Projet-ConceptObjet/ProjetConcept/src/projetconcept/Direction.java</file>
+            <file>file:/C:/Users/Toine/Desktop/Concept%20Objet/GitRepo/Projet-ConceptObjet/ProjetConcept/src/projetconcept/Obstacle.java</file>
             <file>file:/C:/Users/Toine/Desktop/Concept%20Objet/GitRepo/Projet-ConceptObjet/ProjetConcept/src/projetconcept/Savoir.java</file>
-            <file>file:/C:/Users/Toine/Desktop/Concept%20Objet/GitRepo/Projet-ConceptObjet/ProjetConcept/src/projetconcept/MaitreElfe.java</file>
+            <file>file:/C:/Users/Toine/Desktop/Concept%20Objet/GitRepo/Projet-ConceptObjet/ProjetConcept/src/projetconcept/MaitreHumain.java</file>
+            <file>file:/C:/Users/Toine/Desktop/Concept%20Objet/GitRepo/Projet-ConceptObjet/ProjetConcept/src/projetconcept/Dimensions.java</file>
             <file>file:/C:/Users/Toine/Desktop/Concept%20Objet/GitRepo/Projet-ConceptObjet/ProjetConcept/src/projetconcept/EtreVivant.java</file>
-            <file>file:/C:/Users/Toine/Desktop/Concept%20Objet/GitRepo/Projet-ConceptObjet/ProjetConcept/src/projetconcept/MaitreGobelin.java</file>
+            <file>file:/C:/Users/Toine/Desktop/Concept%20Objet/GitRepo/Projet-ConceptObjet/ProjetConcept/src/projetconcept/SafeCase.java</file>
         </group>
     </open-files>
 </project-private>
