@@ -257,15 +257,17 @@ public class ProjetConcept {
         
         /////Affichage final de la possession des Message/////
         
-        for (int s = 0; s < liste.size(); s++){
+        System.out.println("Etats des Savoirs à la fin de la partie : \n");
+        
+        for (int s = 0; s < listeEtresVivants.size(); s++){
             
             System.out.println("Savoir de : " + listeEtresVivants.get(s) + " -> " + listeEtresVivants.get(s).getSavoir());            
             
         }
         
-        
-       
         /////Affichage des vainqueurs/////
+        
+        System.out.println("\n");
         
         if (maitreElfe.getSavoir().getMessages().size() == nombreMessages){
             
