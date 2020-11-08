@@ -7,6 +7,7 @@ package projetconcept;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -23,21 +24,31 @@ public class ProjetConcept {
      */
     public static void main(String[] args) throws InterruptedException {
         
-        int PAS_DE_TEMPS = 1;
-        int NOMBRE_ETRE_PAR_EQUIPE = 3;    
+        int PAS_DE_TEMPS = -1;
+        int NOMBRE_ETRE_PAR_EQUIPE = 0; 
+        final int NOMBRE_ETRE_MAX = 5;
+        final int NOMBRE_ETRE_MIN = 2;
         
         /////Demande utilisateur
         
+        Scanner scan = new Scanner(System.in);
         
-        //NOMBRE_ETRE_PAR_EQUIPE = 0;
+        while (NOMBRE_ETRE_PAR_EQUIPE < NOMBRE_ETRE_MIN || NOMBRE_ETRE_PAR_EQUIPE > NOMBRE_ETRE_MAX){
+                        
+            System.out.println("Veuillez le nombre d'individus par équipe(Min 2 ; Max 5): ");
         
+            NOMBRE_ETRE_PAR_EQUIPE = Integer.parseInt(scan.nextLine());            
+            
+        }
         
-        //demander un pas de temps à l'utilisateur 
-        //Demander le nombre d'etres vivants par équipe entre 1 et 5 (vérifier que c'est bien entre 1 et 5)
+        while (PAS_DE_TEMPS < 0){
+                        
+            System.out.println("Veuillez un pas de temps en millisecondes: ");
         
-        
-        
-        
+            PAS_DE_TEMPS = Integer.parseInt(scan.nextLine());            
+            
+        }
+                
         
         /////Création Carte/////
         
@@ -179,7 +190,7 @@ public class ProjetConcept {
         }
         
         
-        int nombreMessages = 12;
+        int nombreMessages = NOMBRE_ETRE_PAR_EQUIPE * 8;
         
         /////Initialisation de la Carte (Attention ordre des actions important)/////
         
@@ -245,6 +256,12 @@ public class ProjetConcept {
         }
         
         /////Affichage final de la possession des Message/////
+        
+        for (int s = 0; s < liste.size(); s++){
+            
+            System.out.println("Savoir de : " + listeEtresVivants.get(s) + " -> " + listeEtresVivants.get(s).getSavoir());            
+            
+        }
         
         
        
