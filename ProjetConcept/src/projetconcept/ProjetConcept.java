@@ -23,8 +23,21 @@ public class ProjetConcept {
      */
     public static void main(String[] args) throws InterruptedException {
         
-        final int PAS_DE_TEMPS = 1;
-        //final int NOMBRE_ETRE_PAR_EQUIPE = 2;       
+        int PAS_DE_TEMPS = 1;
+        int NOMBRE_ETRE_PAR_EQUIPE = 3;    
+        
+        /////Demande utilisateur
+        
+        
+        //NOMBRE_ETRE_PAR_EQUIPE = 0;
+        
+        
+        //demander un pas de temps à l'utilisateur 
+        //Demander le nombre d'etres vivants par équipe entre 1 et 5 (vérifier que c'est bien entre 1 et 5)
+        
+        
+        
+        
         
         /////Création Carte/////
         
@@ -33,26 +46,22 @@ public class ProjetConcept {
         Carte carte = new Carte(dim);
         
         /////Creation des EtreVivant/////
+                
+        ArrayList<EtreVivant> liste = new ArrayList();  //Liste des EtreVivant (non Maitre)        
         
-        Humain hu = new Humain(carte);
-        Humain hu2 = new Humain(carte);
-        Elfe el = new Elfe(carte);
-        Elfe el2 = new Elfe(carte);
-        Orque oc = new Orque(carte);
-        Orque oc2 = new Orque(carte);
-        Gobelin go = new Gobelin(carte);
-        Gobelin go2 = new Gobelin(carte);
+        for (int e = 0; e < NOMBRE_ETRE_PAR_EQUIPE; e++){
+            
+            Humain humain = new Humain(carte);
+            liste.add(humain);
+            Elfe elfe = new Elfe(carte);
+            liste.add(elfe);
+            Orque orque = new Orque(carte);
+            liste.add(orque);
+            Gobelin gobelin = new Gobelin(carte);
+            liste.add(gobelin);
+            
+        }
         
-        ArrayList<EtreVivant> liste = new ArrayList();  //Liste des EtreVivant (non Maitre)
-        
-        liste.add(el);      //Ajout à la liste
-        liste.add(hu);
-        liste.add(oc);
-        liste.add(go);
-        liste.add(el2);
-        liste.add(hu2);
-        liste.add(oc2);
-        liste.add(go2);
         
         MaitreElfe maitreElfe = MaitreElfe.getInstance(carte);
         MaitreHumain maitreHumain = MaitreHumain.getInstance(carte);
@@ -83,49 +92,94 @@ public class ProjetConcept {
         Message m10 = new Message("you can never come back",10);
         Message m11 = new Message("When you're out of the blue",11);
         Message m12 = new Message("and into the black.",12);
+        Message m13 = new Message("Two shots of happy, one shot of sad ",13);
+        Message m14 = new Message("You think I'm no good, I know I've been bad",14);
+        Message m15 = new Message("Took you to a place, now you can't get back ",15);
+        Message m16 = new Message("Walked together down a dead end street ",16);
+        Message m17 = new Message("We were mixing the bitter with the sweet ",17);
+        Message m18 = new Message("I don't try to figure out what we might of had",18);
+        Message m19 = new Message("I'm just a singer, some say a sinner ",19);
+        Message m20 = new Message("Rolling the dice, not always a winner",20);
+        Message m21 = new Message("Not part of the crowd, but not feeling alone",21);
+        Message m22 = new Message("Under pressure, but not bent out of shape ",22);
+        Message m23 = new Message("You drove me to drink, but hey that's not all bad",23);
+        Message m24 = new Message("The chairs are all stacked, the swinging's stopped swinging",24);        
+        Message m25 = new Message("Rolling the dice, not always a winner",25);
+        Message m26 = new Message("Not part of the crowd, but not feeling alone",26);
+        Message m27 = new Message("Under pressure, but not bent out of shape ",27);
+        Message m28 = new Message("You drove me to drink, but hey that's not all bad",28);
+        Message m29 = new Message("The chairs are all stacked, the swinging's stopped swinging",29);
+        Message m30 = new Message("you can never come back",30);
+        Message m31 = new Message("When you're out of the blue",31);
+        Message m32 = new Message("and into the black.",32);
+        Message m33 = new Message("Two shots of happy, one shot of sad ",33);
+        Message m34 = new Message("You think I'm no good, I know I've been bad",34);
+        Message m35 = new Message("Took you to a place, now you can't get back ",35);
+        Message m36 = new Message("Walked together down a dead end street ",36);
+        Message m37 = new Message("We were mixing the bitter with the sweet ",37);
+        Message m38 = new Message("I don't try to figure out what we might of had",38);
+        Message m39 = new Message("I'm just a singer, some say a sinner ",39);
+        Message m40 = new Message("Rolling the dice, not always a winner",40);
+        
+        ArrayList<Message> BDD_MESSAGES = new ArrayList();
+        
+        BDD_MESSAGES.add(m1);
+        BDD_MESSAGES.add(m2);
+        BDD_MESSAGES.add(m3);
+        BDD_MESSAGES.add(m4);
+        BDD_MESSAGES.add(m5);
+        BDD_MESSAGES.add(m6);
+        BDD_MESSAGES.add(m7);
+        BDD_MESSAGES.add(m8);
+        BDD_MESSAGES.add(m9);
+        BDD_MESSAGES.add(m10);
+        BDD_MESSAGES.add(m11);
+        BDD_MESSAGES.add(m12);
+        BDD_MESSAGES.add(m13);
+        BDD_MESSAGES.add(m14);
+        BDD_MESSAGES.add(m15);
+        BDD_MESSAGES.add(m16);
+        BDD_MESSAGES.add(m17);
+        BDD_MESSAGES.add(m18);
+        BDD_MESSAGES.add(m19);
+        BDD_MESSAGES.add(m20);
+        BDD_MESSAGES.add(m21);
+        BDD_MESSAGES.add(m22);
+        BDD_MESSAGES.add(m23);
+        BDD_MESSAGES.add(m24);
+        BDD_MESSAGES.add(m25);
+        BDD_MESSAGES.add(m26);
+        BDD_MESSAGES.add(m27);
+        BDD_MESSAGES.add(m28);
+        BDD_MESSAGES.add(m29);
+        BDD_MESSAGES.add(m30);
+        BDD_MESSAGES.add(m31);
+        BDD_MESSAGES.add(m32);
+        BDD_MESSAGES.add(m33);
+        BDD_MESSAGES.add(m34);
+        BDD_MESSAGES.add(m35);
+        BDD_MESSAGES.add(m36);
+        BDD_MESSAGES.add(m37);
+        BDD_MESSAGES.add(m38);
+        BDD_MESSAGES.add(m39);
+        BDD_MESSAGES.add(m40);
+        
+        /////Distribution Savoir de départ
+        
+        for (int a = 0; a < liste.size(); a++){
+            
+            ArrayList<Message> messages = new ArrayList();
+                messages.add(BDD_MESSAGES.get(a*2));
+                messages.add(BDD_MESSAGES.get(a*2 + 1));
+                
+            Savoir savoir = new Savoir(messages);
+            
+            liste.get(a).setSavoir(savoir);
+            
+        }
+        
         
         int nombreMessages = 12;
-        
-        /////Distribution des méssages de base aux EtreVivant/////
-        
-        ArrayList<Message> lH = new ArrayList();
-        lH.add(m1);
-        lH.add(m2);
-        ArrayList<Message> lH2 = new ArrayList();
-        lH2.add(m3);
-        ArrayList<Message> lE = new ArrayList();
-        lE.add(m4);
-        lE.add(m5);
-        ArrayList<Message> lE2 = new ArrayList();
-        lE2.add(m6);
-        ArrayList<Message> lG = new ArrayList();
-        lG.add(m7);
-        lG.add(m8);
-        ArrayList<Message> lG2 = new ArrayList();
-        lG2.add(m9);
-        ArrayList<Message> lO = new ArrayList();
-        lO.add(m10);
-        lO.add(m11);
-        ArrayList<Message> lO2 = new ArrayList();
-        lO2.add(m12);
-                 
-        Savoir sH = new Savoir(lH);
-        Savoir sE = new Savoir(lE);
-        Savoir sG = new Savoir(lG);
-        Savoir sO = new Savoir(lO);
-        Savoir sH2 = new Savoir(lH2);
-        Savoir sE2 = new Savoir(lE2);
-        Savoir sG2 = new Savoir(lG2);
-        Savoir sO2 = new Savoir(lO2);
-        
-        hu.setSavoir(sH);
-        el.setSavoir(sE);
-        oc.setSavoir(sO);
-        go.setSavoir(sG); 
-        hu2.setSavoir(sH2);
-        el2.setSavoir(sE2);
-        oc2.setSavoir(sO2);
-        go2.setSavoir(sG2);     
         
         /////Initialisation de la Carte (Attention ordre des actions important)/////
         
