@@ -215,7 +215,7 @@ public class ProjetConcept {
         
         /////Affichage de la situation de départ (Possession des Message + Carte)/////
         
-                 
+        System.out.println("Situation avant le début de la partie :");       
         carte.afficherCarte();
         
         /////Simulation/////

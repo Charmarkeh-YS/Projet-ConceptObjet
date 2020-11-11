@@ -268,7 +268,7 @@ public class Carte {
             
         }
         
-        System.out.println("\nLégende : Humain = @ ; Elfe =  + ; Gobelin = € ; Orque = #");
+        System.out.println("\nLégende : Humain = @ ; Elfe =  + ; Gobelin = € ; Orque = # ; Obstacle = %");
         
     }
     
